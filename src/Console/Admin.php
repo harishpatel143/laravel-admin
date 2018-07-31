@@ -41,15 +41,17 @@ class Admin extends Command
     {
         $this->info('Welcome to Multidots Admin Panel');
         $this->info('Publishing Admin Controllers');
-        $this->info('1. Publishing Admin Models');
-        $this->admin();
+        $this->info('1. Publishing File');
+        $this->publishAdminFile();
         $this->info('2. Running migration');
-        $this->call('migrate');
+//        $this->call('migrate');
         $this->info('3. Create Role');
-        $this->createRole();
+//        $this->createRole();
         $this->info('4. Create Admin');
-        $this->createAdmin();
+        $this->removeTempFile();
+//        $this->createAdmin();
         $code = Artisan::call('cache:clear');
+
         $this->info('command is run');
     }
 
@@ -58,12 +60,13 @@ class Admin extends Command
         $this->info('publishPackageRequireFiles is run');
     }
 
-    public function admin()
+    public function publishAdminFile()
     {
         $this->callSilent('vendor:publish', [
-            '--tag' => ['admin-controllers', 'admin-models', 'admin-views', 'admin-seeds', 'admin-migrations', 'admin-assets'],
+            '--tag' => ['admin-controllers', 'admin-models', 'admin-views', 'admin-seeds', 'admin-migrations', 'admin-assets', 'admin-request'],
             '--force' => true
         ]);
+        $this->info('Files published successfully.');
     }
 
     /**
@@ -74,7 +77,7 @@ class Admin extends Command
         $this->info('Please enter role details');
         $data['name'] = $this->ask('Role name');
         $data['description'] = $this->ask('Role description');
-        $data['role_id'] = 1;
+        $data['status'] = 1;
         \App\Models\Role::create($data);
         $this->info('Role has been created');
     }
@@ -95,6 +98,20 @@ class Admin extends Command
         $data['role_id'] = 1;
         \App\Models\Administrator::create($data);
         $this->info('Admin has been created');
+    }
+
+    /**
+     * 
+     * @param type $names
+     */
+    public function removeTempFile()
+    {
+        $dir = public_path() . '/Temp/';
+        $files = array_diff(scandir($dir), array('.', '..'));
+        foreach ($files as $file) {
+            (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file");
+        }
+        return rmdir($dir);
     }
 
 }

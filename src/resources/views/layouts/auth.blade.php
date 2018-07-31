@@ -11,15 +11,15 @@
         <title>{{ config('app.name', 'Laravel') }} | {{ config('app.admin') }}</title>
 
         <!-- Theme css-->
-        <link rel="stylesheet" href="{{ asset('admin/plugins/bootstrap/dist/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset(config('admin.public-js-css').'plugins/bootstrap/dist/css/bootstrap.min.css') }}">
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="{{ asset('admin/plugins/font-awesome/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset(config('admin.public-js-css').'plugins/font-awesome/css/font-awesome.min.css') }}">
         <!-- Ionicons -->
-        <link rel="stylesheet" href="{{ asset('admin/plugins/Ionicons/css/ionicons.min.css') }}">
+        <link rel="stylesheet" href="{{ asset(config('admin.public-js-css').'plugins/Ionicons/css/ionicons.min.css') }}">
         <!-- Theme style -->
-        <link rel="stylesheet" href="{{ asset('admin/dist/css/AdminLTE.min.css') }}">
+        <link rel="stylesheet" href="{{ asset(config('admin.public-js-css').'dist/css/AdminLTE.min.css') }}">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
-        <link rel="stylesheet" href="{{ asset('admin/plugins/iCheck/square/blue.css') }}">
+        <link rel="stylesheet" href="{{ asset(config('admin.public-js-css').'plugins/iCheck/square/blue.css') }}">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     </head>
@@ -33,15 +33,15 @@
             </div>            
         </div>
         <!-- Scripts -->
-        <script src="{{ asset('admin/js/app.js') }}"></script>
+        <script src="{{ asset(config('admin.public-js-css').'js/app.js') }}"></script>
         <!-- jQuery 3 -->
-        <script src="{{ asset('admin/js/jquery.min.js') }}"></script>
+        <script src="{{ asset(config('admin.public-js-css').'js/jquery.min.js') }}"></script>
         <!-- Bootstrap 3.3.7 -->
-        <script src="{{ asset('admin/plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset(config('admin.public-js-css').'plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
         <!-- iCheck -->
-        <script src="{{ asset('admin/plugins/iCheck/icheck.min.js') }}"></script>
-        <script src="{{ asset('admin/plugins/jquery-validation/js/jquery.validate.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('admin/plugins/jquery-validation/js/additional-methods.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset(config('admin.public-js-css').'plugins/iCheck/icheck.min.js') }}"></script>
+        <script src="{{ asset(config('admin.public-js-css').'plugins/jquery-validation/js/jquery.validate.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset(config('admin.public-js-css').'plugins/jquery-validation/js/additional-methods.min.js') }}" type="text/javascript"></script>
         @yield('js')
         <script>
 $(function () {

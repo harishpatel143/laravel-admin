@@ -1,9 +1,10 @@
 <?php
 
+
 /**
  * All the administrator route files
  */
-Route::group(['prefix' => config('admin.route.prefix'), 'namespace' => 'Multidots\Admin\Http\Controllers'], function () {
+Route::group(['prefix' => config('admin.route.prefix'), 'namespace' => 'App\Http\Controllers\Admin'], function () {
 
     Route::group(['middleware' => 'web'], function() {
         Route::get('/', 'LoginController@showLoginForm');
@@ -19,6 +20,7 @@ Route::group(['prefix' => config('admin.route.prefix'), 'namespace' => 'Multidot
         Route::post('/account/reset-password/check_email', 'ResetPasswordController@checkAdminEmail');
     });
     Route::group(['middleware' => ['web', 'admin']], function() {
+        Route::get('/', 'HomeController@index')->name('home');
         Route::get('/account/dashboard', 'HomeController@index')->name('home');
 
         // Profile  Routes

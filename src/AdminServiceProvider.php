@@ -16,11 +16,6 @@ class AdminServiceProvider extends ServiceProvider
     ];
 
     /**
-     * Controller Names
-     */
-    protected $controllerNames = [];
-
-    /**
      * The application's route middleware.
      *
      * @var array
@@ -56,10 +51,6 @@ class AdminServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'admin');
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
 
-//        if (file_exists($routes = admin_path('routes.php'))) {
-//            $this->loadRoutesFrom($routes);
-//        }
-
         if ($this->app->runningInConsole()) {
 
             //CONTROLLERS
@@ -67,6 +58,7 @@ class AdminServiceProvider extends ServiceProvider
                     [
                 $this->changeControllerNamespace('Controller.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'Controller.php'),
                 $this->changeControllerNamespace('AccountController.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'AccountController.php'),
+                $this->changeControllerNamespace('AdministratorController.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'AdministratorController.php'),
                 $this->changeControllerNamespace('AdministratorController.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'AccountController.php'),
                 $this->changeControllerNamespace('ForgotPasswordController.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'ForgotPasswordController.php'),
                 $this->changeControllerNamespace('HomeController.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'HomeController.php'),
@@ -82,7 +74,8 @@ class AdminServiceProvider extends ServiceProvider
                     ], 'admin-models');
             //MODELS
             $this->publishes([
-                $this->changeRequestNamespace('AdministratorRequest.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Request' . DIRECTORY_SEPARATOR . 'AdministratorRequest.php')
+                $this->changeRequestNamespace('AdministratorRequest.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Request' . DIRECTORY_SEPARATOR . 'AdministratorRequest.php'),
+                $this->changeRequestNamespace('RoleRequest.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Request' . DIRECTORY_SEPARATOR . 'RoleRequest.php')
                     ], 'admin-request');
             //VIEWS
             $this->publishes([__DIR__ . '/resources/views' => resource_path('views/admin')], 'admin-views');
@@ -91,7 +84,7 @@ class AdminServiceProvider extends ServiceProvider
             //SEEDS
             $this->publishes([__DIR__ . '/database/seeds' => database_path('seeds')], 'admin-seeds');
             //ASSETS
-            $this->publishes([__DIR__ . '/public' => public_path('admin')], 'admin-assets');
+            $this->publishes([__DIR__ . '/public' => public_path('multidots/admin')], 'admin-assets');
 
             // Register commands
             $this->app->bind('admin:make', function ($app) {
@@ -109,11 +102,8 @@ class AdminServiceProvider extends ServiceProvider
     {
 
         // merge default config
-        $this->mergeConfigFrom(
-                __DIR__ . '/config/admin.php', 'admin'
-        );
+        $this->mergeConfigFrom(__DIR__ . '/config/admin.php', 'admin');
 
-        include __DIR__ . '/routes/web.php';
         $this->app->make('Multidots\Admin\Http\Controllers\AccountController');
         $this->app->make('Multidots\Admin\Http\Controllers\AdministratorController');
         $this->app->make('Multidots\Admin\Http\Controllers\Controller');
@@ -183,7 +173,7 @@ class AdminServiceProvider extends ServiceProvider
     public function replaceControllerNameSpace($data)
     {
         if (stristr($data, 'namespace')) {
-            return "namespace App\Http\Admin\Controllers;\n";
+            return "namespace App\Http\Controllers\Admin;\n";
         }
         return $data;
     }
@@ -250,18 +240,6 @@ class AdminServiceProvider extends ServiceProvider
             return "namespace App\Http\Requests;\n";
         }
         return $data;
-    }
-
-    /**
-     * 
-     * @param type $names
-     */
-    public function removeTempFile()
-    {
-        $publicPath = public_path() . '/Temp/';
-        foreach ($this->controllerNames as $name) {
-            unlink($publicPath . $name);
-        }
     }
 
 }

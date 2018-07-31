@@ -32,7 +32,7 @@ return [
     /**
      * public all the css, js, plugin path
      */
-    'public-js-css' => 'admin/',
+    'public-js-css' => 'multidots/admin/',
     /*
      * Use https.
      */
