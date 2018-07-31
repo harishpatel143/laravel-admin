@@ -1,12 +1,13 @@
 <?php
 
-namespace Multidots\Admin\Requests;
+namespace Multidots\Admin\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 
 class RoleRequest extends FormRequest
 {
+
     /**
      * Determine if the role is authorized to make this request.
      *
@@ -29,7 +30,7 @@ class RoleRequest extends FormRequest
             'description' => 'required',
         ];
     }
-    
+
     /**
      * Get the error messages for the defined validation rules.
      *
@@ -42,4 +43,5 @@ class RoleRequest extends FormRequest
             'description.required' => 'Please enter description.',
         ];
     }
+
 }

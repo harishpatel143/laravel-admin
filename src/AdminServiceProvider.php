@@ -28,7 +28,7 @@ class AdminServiceProvider extends ServiceProvider
     protected $routeMiddleware = [
         'admin.auth' => \Multidots\Admin\Middleware\AuthenticateAdmin::class,
         'permission' => \Multidots\Admin\Middleware\Permission::class,
-        'admin.redirect-authenticate' => \Multidots\Admin\Middleware\RedirectIfAuthenticated::class,
+//        'admin.redirect-authenticate' => \Multidots\Admin\Middleware\RedirectIfAuthenticated::class,
         'admin.not-authenticate' => \Multidots\Admin\Middleware\RedirectIfNotAdmin::class,
         \Multidots\Admin\Middleware\RolePermission::class,
     ];
@@ -41,7 +41,7 @@ class AdminServiceProvider extends ServiceProvider
     protected $middlewareGroups = [
         'admin' => [
             'admin.auth',
-            'admin.redirect-authenticate',
+//            'admin.redirect-authenticate',
             'admin.not-authenticate',
         ],
     ];
@@ -80,6 +80,10 @@ class AdminServiceProvider extends ServiceProvider
                 $this->changeModelNamespace('Role.php') => app_path('Models' . DIRECTORY_SEPARATOR . 'Role.php'),
                 $this->changeModelNamespace('Permission.php') => app_path('Models' . DIRECTORY_SEPARATOR . 'Permission.php'),
                     ], 'admin-models');
+            //MODELS
+            $this->publishes([
+                $this->changeRequestNamespace('AdministratorRequest.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Request' . DIRECTORY_SEPARATOR . 'AdministratorRequest.php')
+                    ], 'admin-request');
             //VIEWS
             $this->publishes([__DIR__ . '/resources/views' => resource_path('views/admin')], 'admin-views');
             //MIGRATIONS
@@ -212,6 +216,38 @@ class AdminServiceProvider extends ServiceProvider
     {
         if (stristr($data, 'namespace')) {
             return "namespace App\Models;\n";
+        }
+        return $data;
+    }
+
+    /**
+     * 
+     * @param type $file
+     * @return type
+     */
+    public function changeRequestNamespace($file)
+    {
+        $filename = public_path() . '/Temp/' . $file;
+        if (!is_dir(dirname($filename))) {
+            mkdir(dirname($filename), 0777, true);
+        }
+        $writing = fopen($filename, 'w');
+        $contentData = array_map(array($this, 'replaceRequestNameSpace'), file(__DIR__ . '/Http/Requests/' . $file));
+        fclose($writing);
+        file_put_contents($filename, implode('', $contentData));
+
+        return $filename;
+    }
+
+    /**
+     * 
+     * @param type $data
+     * @return string
+     */
+    public function replaceRequestNameSpace($data)
+    {
+        if (stristr($data, 'namespace')) {
+            return "namespace App\Http\Requests;\n";
         }
         return $data;
     }

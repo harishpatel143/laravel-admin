@@ -1,6 +1,6 @@
 <?php
 
-namespace Multidots\Admin\Requests;
+namespace Multidots\Admin\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
