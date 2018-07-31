@@ -1,5 +1,5 @@
 {
-    "name": "multidots/laravel-admin",
+    "name": "harish/laravel-admin",
     "description": "This is demo admin panel for role, permission ,admin, and email template management.",
     "type": "library",
     "license": "MIT",
