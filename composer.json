@@ -1,0 +1,31 @@
+{
+    "name": "multidots/laravel-admin",
+    "description": "This is demo admin panel for role, permission ,admin, and email template management.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Harish Patel",
+            "email": "harish.patel@multidots.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "laravelcollective/html": "5.6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Multidots\\Admin\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Multidots\\Admin\\AdminServiceProvider"
+            ],
+            "aliases": {
+                "Admin": "Multidots\\Admin\\Facades\\Admin"
+            }
+        }
+    }
+}

@@ -1,0 +1,98 @@
+/*!
+ * Custom CSS write here
+ */
+
+.control-label .required,
+.form-group .required {
+    color: #e02222;
+    font-size: 12px;
+    padding-left: 2px;
+}
+.fileinput-preview img{height: 110px !important;width: 120px !important;}
+.box-profile img{
+    max-width: 120px;
+    height: 100px;
+    box-shadow: 0 0 0 5px rgba(255,255,255,0.5), 0 0 10px rgba(0,0,0,0.2);
+    margin-bottom: 6px;
+}
+.list-inline, .list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+.list-unstyled li>.list-unstyled {
+    margin-left: 25px;
+}
+.list-inline, .list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+.fileinput {
+    margin-left: 40px;
+}
+.fileinput .select-image-btn {
+    background: #e7e7e7;
+    border-radius: 0;
+    margin-top: 10px;
+}
+.avatar_message {
+    background: #e7e7e7;
+    border-radius: 0;
+    color: #000;
+    margin-top: 10px;
+}
+.skin-blue .main-header .navbar {
+    background-color: #3d4244;
+}
+.skin-blue .main-header .logo {
+    background-color: #333638;
+}
+.skin-blue .main-header .logo:hover,
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+    background-color: #2e3233;
+}
+.pagination>.active>a, 
+.pagination>.active>a:focus, 
+.pagination>.active>a:hover, 
+.pagination>.active>span, 
+.pagination>.active>span:focus, 
+.pagination>.active>span:hover {
+    background-color: #222d32;
+    border-color: #222d32;
+}
+.content-wrapper {
+    background-color: #f2f2f2;
+}
+.btn-navy {
+    background-color: #3d4244;
+    border-color: #3d4244;
+    color: #fff;
+}
+.btn-navy:focus, 
+.btn-navy:hover {
+    color: #fff; 
+    background: #333638;
+    border-color: #333638;   
+}
+
+.skin-blue .main-header li.user-header {
+    background-color: #3d4244;
+}
+.info-box-user {
+    display: block;
+    font-size: 18px;
+    padding: 5px;
+}
+.nav-tabs li.edit-icon-info {
+    float: right;
+}
+.nav-tabs li.edit-icon-info i {
+    font-size: 18px;
+}
+.nav-tabs-custom>.nav-tabs>li.edit-icon-info>a:hover {
+    color: #000;
+}
+.has-error .select2-container--default .select2-selection--single,
+.has-error .select2-selection .select2-selection--single {
+    border-color: #dd4b39;
+}
