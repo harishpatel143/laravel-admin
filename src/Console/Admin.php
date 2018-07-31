@@ -44,12 +44,12 @@ class Admin extends Command
         $this->info('1. Publishing File');
         $this->publishAdminFile();
         $this->info('2. Running migration');
-//        $this->call('migrate');
+        $this->call('migrate');
         $this->info('3. Create Role');
-//        $this->createRole();
+        $this->createRole();
         $this->info('4. Create Admin');
         $this->removeTempFile();
-//        $this->createAdmin();
+        $this->createAdmin();
         $code = Artisan::call('cache:clear');
 
         $this->info('command is run');
