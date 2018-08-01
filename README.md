@@ -10,15 +10,18 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 composer create-project --prefer-dist laravel/laravel blog
 
 ### After installing laravel application configgure database details in the env file
+```php 
 
-- DB_CONNECTION=mysql
-- DB_HOST=127.0.0.1
-- DB_PORT=3306
-- DB_DATABASE=homestead
-- DB_USERNAME=homestead
-- DB_PASSWORD=secret
+    - DB_CONNECTION=mysql
+    - DB_HOST=127.0.0.1
+    - DB_PORT=3306
+    - DB_DATABASE=homestead
+    - DB_USERNAME=homestead
+    - DB_PASSWORD=secret
+    
+```
 
-After database configuration open the App\Provider\AppServiveProvider.php for and add the following code into the boot() method to "Specified key was too long" error.
+- Open the App\Provider\AppServiveProvider.php and add the following code into the boot() method to avoid "Specified key was too long" error at the time of database migrate.
 
 ```php
 use Illuminate\Support\Facades\Schema;
