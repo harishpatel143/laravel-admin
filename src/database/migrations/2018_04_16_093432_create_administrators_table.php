@@ -17,14 +17,14 @@ class CreateAdministratorsTable extends Migration
         Schema::create('administrators', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('role_id')->unsigned()->index();
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->string('username', 100)->nullable()->unique();
-            $table->string('email', 100)->unique();
-            $table->string('password');
+            $table->string('email', 100)->nullable()->unique();
+            $table->string('password')->nullable();
             $table->string('avatar')->nullable();
             $table->tinyInteger('status')->comment('0 => Inactive, 1 => Active, 2 => Delete')->default(config('admin.database.DATABASE_DEFAULT_STATUS'));
-            $table->dateTime('last_login');
+            $table->dateTime('last_login')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

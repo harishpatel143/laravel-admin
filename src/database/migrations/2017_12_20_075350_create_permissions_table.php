@@ -17,8 +17,8 @@ class CreatePermissionsTable extends Migration
         Schema::create('permissions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('parent_id')->comment('Root Permission')->unsigned();
-            $table->string('title');
-            $table->string('permission_key');
+            $table->string('title')->nullable();
+            $table->string('permission_key')->nullable();
             $table->tinyInteger('status')->comment('0 => Inactive, 1 => Active, 2 => Delete')->default(config('admin.database.DATABASE_DEFAULT_STATUS'));
             $table->timestamps();
         });
