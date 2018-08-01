@@ -14,7 +14,7 @@ class CreateAdministratorsTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('admin.database.administrators_table'), function (Blueprint $table) {
+        Schema::create('administrators', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('role_id')->unsigned()->index();
             $table->string('first_name');
@@ -37,6 +37,7 @@ class CreateAdministratorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('admin.database.administrators_table'));
+        Schema::dropIfExists('administrators');
     }
+
 }

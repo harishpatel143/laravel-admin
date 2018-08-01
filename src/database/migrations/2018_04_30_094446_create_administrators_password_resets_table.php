@@ -14,7 +14,7 @@ class CreateAdministratorPasswordResetsTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('admin.database.administrator_password_resets_table'), function (Blueprint $table) {
+        Schema::create('administrator_password_resets', function (Blueprint $table) {
             $table->string('email', 100)->index();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
@@ -28,6 +28,7 @@ class CreateAdministratorPasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('admin.database.administrator_password_resets_table'));
+        Schema::dropIfExists('administrator_password_resets');
     }
+
 }
