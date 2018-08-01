@@ -100,10 +100,8 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
         // merge default config
         $this->mergeConfigFrom(__DIR__ . '/config/admin.php', 'admin');
-
         $this->app->make('Multidots\Admin\Http\Controllers\AccountController');
         $this->app->make('Multidots\Admin\Http\Controllers\AdministratorController');
         $this->app->make('Multidots\Admin\Http\Controllers\Controller');

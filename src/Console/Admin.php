@@ -39,29 +39,26 @@ class Admin extends Command
      */
     public function handle()
     {
-//        $this->info('Welcome to Multidots Admin Panel');
-//        $this->info('Publishing Admin Controllers, Models, Views and Migrations');
-//        $this->info('1. Publishing File');
-//        $this->publishAdminFile();
-//        $this->info('2. Running migration');
-//        $this->call('migrate');
-//        $this->info('3. Create Role');
-//        $this->createRole();
-//        $this->info('4. Create Admin');
-//        $this->createAdmin();
-//        $this->info('5. Append routes to web.php');
+        $this->info('Welcome to Multidots Admin Panel');
+        $this->info('1. Publishing Admin Controllers, Models, Views and Migrations');
+        $this->publishAdminFile();
+        $this->info('2. Running migration');
+        $this->call('migrate');
+        $this->info('3. Create Role');
+        $this->createRole();
+        $this->info('4. Create Admin');
+        $this->createAdmin();
+        $this->info('5. Append routes to web.php');
         $this->appendRoutes();
         $this->removeTempFile();
-        $code = Artisan::call('cache:clear');
-
-        $this->info('command is run');
+        Artisan::call('cache:clear');
+        $this->info('Package install successfuly.');
+        $this->info('Run on -> http://127.0.0.1:8000/admin/ ');
     }
 
-    protected function publishPackageRequireFiles()
-    {
-        $this->info('publishPackageRequireFiles is run');
-    }
-
+    /**
+     * Publishing all the file from service provider.
+     */
     public function publishAdminFile()
     {
         $this->callSilent('vendor:publish', [
