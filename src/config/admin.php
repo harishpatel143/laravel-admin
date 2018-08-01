@@ -50,7 +50,7 @@ return [
         'providers' => [
             'admin' => [
                 'driver' => 'eloquent',
-                'model' => Multidots\Admin\Model\Administrator::class,
+                'model' => Multidots\Admin\Models\Administrator::class,
             ],
         ],
         'passwords' => [
@@ -69,15 +69,15 @@ return [
         'connection' => '',
         // Administrators tables and model.
         'administrators_table' => 'administrators',
-        'administrators_model' => Multidots\Admin\Modle\Administrator::class,
+        'administrators_model' => Multidots\Admin\Models\Administrator::class,
         // Administrator reset password tables and model.
         'administrator_password_resets_table' => 'administrator_password_resets',
         // Role table and model.
         'roles_table' => 'roles',
-        'roles_model' => Multidots\Admin\Modle\Role::class,
+        'roles_model' => Multidots\Admin\Models\Role::class,
         // Permission table and model.
         'permissions_table' => 'permissions',
-        'permissions_model' => Multidots\Admin\Modle\Permission::class,
+        'permissions_model' => Multidots\Admin\Models\Permission::class,
         // Pivot table for table above.
         'role_permission_table' => 'permission_role',
     ],

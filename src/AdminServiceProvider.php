@@ -84,7 +84,7 @@ class AdminServiceProvider extends ServiceProvider
             $this->publishes([__DIR__ . '/database/seeds' => database_path('seeds')], 'admin-seeds');
             //ASSETS
             $this->publishes([__DIR__ . '/public' => public_path('multidots/admin')], 'admin-assets');
-            $this->publishes([__DIR__ . '/config' => config_path('config')], 'admin-config');
+            $this->publishes([__DIR__ . '/config' => config_path()], 'admin-config');
 
             // Register commands
             $this->app->bind('multidots-admin:install', function ($app) {
@@ -157,7 +157,7 @@ class AdminServiceProvider extends ServiceProvider
         file_put_contents($tempFile, $string);
         $string = str_replace("App\Http\Controllers", "App\Http\Controllers\Admin", file_get_contents($tempFile));
         file_put_contents($tempFile, $string);
-        
+
         return $tempFile;
     }
 
