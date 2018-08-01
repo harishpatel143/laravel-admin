@@ -73,8 +73,8 @@ class AdminServiceProvider extends ServiceProvider
                     ], 'admin-models');
             //MODELS
             $this->publishes([
-                $this->replaceNamespace('AdministratorRequest.php', __DIR__ . '/Http/Requests/') => app_path('Http' . DIRECTORY_SEPARATOR . 'Request' . DIRECTORY_SEPARATOR . 'AdministratorRequest.php'),
-                $this->replaceNamespace('RoleRequest.php', __DIR__ . '/Http/Requests/') => app_path('Http' . DIRECTORY_SEPARATOR . 'Request' . DIRECTORY_SEPARATOR . 'RoleRequest.php')
+                $this->replaceNamespace('AdministratorRequest.php', __DIR__ . '/Http/Requests/') => app_path('Http' . DIRECTORY_SEPARATOR . 'Requests' . DIRECTORY_SEPARATOR . 'AdministratorRequest.php'),
+                $this->replaceNamespace('RoleRequest.php', __DIR__ . '/Http/Requests/') => app_path('Http' . DIRECTORY_SEPARATOR . 'Requests' . DIRECTORY_SEPARATOR . 'RoleRequest.php')
                     ], 'admin-request');
             //VIEWS
             $this->publishes([__DIR__ . '/resources/views' => resource_path('views/admin')], 'admin-views');
@@ -156,6 +156,8 @@ class AdminServiceProvider extends ServiceProvider
         $string = str_replace("Multidots\Admin", "App", file_get_contents($dir . $file));
         file_put_contents($tempFile, $string);
         $string = str_replace("App\Http\Controllers", "App\Http\Controllers\Admin", file_get_contents($tempFile));
+        file_put_contents($tempFile, $string);
+        $string = str_replace("admin::", "", file_get_contents($tempFile));
         file_put_contents($tempFile, $string);
 
         return $tempFile;

@@ -23,7 +23,7 @@ class CreateAdministratorsTable extends Migration
             $table->string('email', 100)->nullable()->unique();
             $table->string('password')->nullable();
             $table->string('avatar')->nullable();
-            $table->tinyInteger('status')->comment('0 => Inactive, 1 => Active, 2 => Delete')->default(config('admin.database.DATABASE_DEFAULT_STATUS'));
+            $table->tinyInteger('status')->comment('0 => Inactive, 1 => Active, 2 => Delete')->default(1);
             $table->dateTime('last_login')->nullable();
             $table->rememberToken();
             $table->timestamps();

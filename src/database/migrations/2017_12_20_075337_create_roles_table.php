@@ -18,7 +18,7 @@ class CreateRolesTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->longText('description')->nullable();
-            $table->tinyInteger('status')->comment('0 => Inactive, 1 => Active, 2 => Delete')->default(config('admin.database.DATABASE_DEFAULT_STATUS'));
+            $table->tinyInteger('status')->comment('0 => Inactive, 1 => Active, 2 => Delete')->default(1);
             $table->timestamps();
         });
     }

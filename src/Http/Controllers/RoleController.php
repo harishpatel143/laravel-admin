@@ -3,7 +3,7 @@
 namespace Multidots\Admin\Http\Controllers;
 
 use Multidots\Admin\Http\Controllers\Controller;
-use Multidots\Admin\Requests\RoleRequest;
+use Multidots\Admin\Http\Requests\RoleRequest;
 use Multidots\Admin\Models\Role;
 use Multidots\Admin\Models\Permission;
 use Cache;

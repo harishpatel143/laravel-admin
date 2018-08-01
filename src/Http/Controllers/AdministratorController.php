@@ -8,7 +8,7 @@ use Multidots\Admin\Models\Administrator;
 use Multidots\Admin\Models\Role;
 use Exception;
 use Illuminate\Http\Request;
-use Multidots\Admin\Requests\AdministratorRequest;
+use Multidots\Admin\Http\Requests\AdministratorRequest;
 
 class AdministratorController extends Controller
 {
