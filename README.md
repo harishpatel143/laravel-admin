@@ -5,11 +5,11 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 ## Step to Install
 
-## Run the following command to install new laravel appplication setup.
+### Run the following command to install new laravel appplication setup.
 
 composer create-project --prefer-dist laravel/laravel blog
 
-## After installing laravel application configgure database details in the env file
+### After installing laravel application configgure database details in the env file
 
 - DB_CONNECTION=mysql
 - DB_HOST=127.0.0.1
@@ -18,39 +18,69 @@ composer create-project --prefer-dist laravel/laravel blog
 - DB_USERNAME=homestead
 - DB_PASSWORD=secret
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+After database configuration open the App\Provider\AppServiveProvider.php for and add the following code into the boot() method to "Specified key was too long" error.
 
-## Laravel Sponsors
+```php
+use Illuminate\Support\Facades\Schema;
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+public function boot()
+{
+    ....
+    
+    Schema::defaultStringLength(191);
+    
+    .....
+}
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
+```
 
-## Contributing
+### After the run the following composer command to install the multidots admin panel 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```php 
+  
+composer require harish/laravel-admin
 
-## Security Vulnerabilities
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### After successfully installation of package we need to publish and install in our application for that run this command 
 
-## License
+```php 
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+php artisan multidots-admin:install
+
+```
+
+### This command publish all the controller,models, view , request file and routes files to your local envronment.
+
+In this command ask you for create roll and default admin for the admin panel. enter the correct information.
+
+### You are almost done!
+
+### Run the laravel application
+
+```php 
+  
+  php artinsa serve
+
+```
+
+### Go to the url http://127.0.0.1:8000/admin/
+
+## Your Admin panel is install successfully
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
