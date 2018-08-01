@@ -4,8 +4,8 @@ namespace Multidots\Admin\Traits;
 
 use Auth;
 use Cache;
-use Multidots\Admin\Model\Permission;
-use Multidots\Admin\Model\Role;
+use Multidots\Admin\Models\Permission;
+use Multidots\Admin\Models\Role;
 
 trait Permissions
 {

@@ -1,10 +1,9 @@
 <?php
 
-
 /**
  * All the administrator route files
  */
-Route::group(['prefix' => config('admin.route.prefix'), 'namespace' => 'App\Http\Controllers\Admin'], function () {
+Route::group(['prefix' => config('admin.route.prefix'), 'namespace' => 'Multidots\Admin\Http\Controllers'], function () {
 
     Route::group(['middleware' => 'web'], function() {
         Route::get('/', 'LoginController@showLoginForm');
