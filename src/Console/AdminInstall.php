@@ -5,7 +5,7 @@ namespace Multidots\Admin\Console;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 
-class Admin extends Command
+class AdminInstall extends Command
 {
 
     /**
@@ -13,14 +13,14 @@ class Admin extends Command
      *
      * @var string
      */
-    protected $signature = 'admin:make';
+    protected $signature = 'multidots-admin:install';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Publish the all the package required files.';
+    protected $description = 'Install admin panel';
 
     /**
      * Create a new command instance.
@@ -62,7 +62,7 @@ class Admin extends Command
     public function publishAdminFile()
     {
         $this->callSilent('vendor:publish', [
-            '--tag' => ['admin-controllers', 'admin-models', 'admin-views', 'admin-seeds', 'admin-migrations', 'admin-assets', 'admin-request'],
+            '--tag' => ['admin-controllers', 'admin-models', 'admin-views', 'admin-seeds', 'admin-migrations', 'admin-assets', 'admin-request', 'admin-config'],
             '--force' => true
         ]);
         $this->info('Files published successfully.');

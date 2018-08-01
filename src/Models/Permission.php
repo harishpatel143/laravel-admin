@@ -1,6 +1,6 @@
 <?php
 
-namespace Multidots\Admin\Model;
+namespace Multidots\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Multidots\Admin\Traits\Permissions;

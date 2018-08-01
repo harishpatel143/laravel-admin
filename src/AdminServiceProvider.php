@@ -12,7 +12,7 @@ class AdminServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
-        'Multidots\Admin\Console\Admin',
+        'Multidots\Admin\Console\AdminInstall',
     ];
 
     /**
@@ -56,26 +56,25 @@ class AdminServiceProvider extends ServiceProvider
             //CONTROLLERS
             $this->publishes(
                     [
-                $this->changeControllerNamespace('Controller.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'Controller.php'),
-                $this->changeControllerNamespace('AccountController.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'AccountController.php'),
-                $this->changeControllerNamespace('AdministratorController.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'AdministratorController.php'),
-                $this->changeControllerNamespace('AdministratorController.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'AccountController.php'),
-                $this->changeControllerNamespace('ForgotPasswordController.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'ForgotPasswordController.php'),
-                $this->changeControllerNamespace('HomeController.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'HomeController.php'),
-                $this->changeControllerNamespace('LoginController.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'LoginController.php'),
-                $this->changeControllerNamespace('ResetPasswordController.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'ResetPasswordController.php'),
-                $this->changeControllerNamespace('RoleController.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'RoleController.php')
+                $this->replaceNamespace('Controller.php', __DIR__ . '/Http/Controllers/') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'Controller.php'),
+                $this->replaceNamespace('AccountController.php', __DIR__ . '/Http/Controllers/') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'AccountController.php'),
+                $this->replaceNamespace('AdministratorController.php', __DIR__ . '/Http/Controllers/') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'AdministratorController.php'),
+                $this->replaceNamespace('ForgotPasswordController.php', __DIR__ . '/Http/Controllers/') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'ForgotPasswordController.php'),
+                $this->replaceNamespace('HomeController.php', __DIR__ . '/Http/Controllers/') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'HomeController.php'),
+                $this->replaceNamespace('LoginController.php', __DIR__ . '/Http/Controllers/') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'LoginController.php'),
+                $this->replaceNamespace('ResetPasswordController.php', __DIR__ . '/Http/Controllers/') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'ResetPasswordController.php'),
+                $this->replaceNamespace('RoleController.php', __DIR__ . '/Http/Controllers/') => app_path('Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'RoleController.php')
                     ], 'admin-controllers');
             //MODELS
             $this->publishes([
-                $this->changeModelNamespace('Administrator.php') => app_path('Models' . DIRECTORY_SEPARATOR . 'Administrator.php'),
-                $this->changeModelNamespace('Role.php') => app_path('Models' . DIRECTORY_SEPARATOR . 'Role.php'),
-                $this->changeModelNamespace('Permission.php') => app_path('Models' . DIRECTORY_SEPARATOR . 'Permission.php'),
+                $this->replaceNamespace('Administrator.php', __DIR__ . '/Models/') => app_path('Models' . DIRECTORY_SEPARATOR . 'Administrator.php'),
+                $this->replaceNamespace('Role.php', __DIR__ . '/Models/') => app_path('Models' . DIRECTORY_SEPARATOR . 'Role.php'),
+                $this->replaceNamespace('Permission.php', __DIR__ . '/Models/') => app_path('Models' . DIRECTORY_SEPARATOR . 'Permission.php'),
                     ], 'admin-models');
             //MODELS
             $this->publishes([
-                $this->changeRequestNamespace('AdministratorRequest.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Request' . DIRECTORY_SEPARATOR . 'AdministratorRequest.php'),
-                $this->changeRequestNamespace('RoleRequest.php') => app_path('Http' . DIRECTORY_SEPARATOR . 'Request' . DIRECTORY_SEPARATOR . 'RoleRequest.php')
+                $this->replaceNamespace('AdministratorRequest.php', __DIR__ . '/Http/Requests/') => app_path('Http' . DIRECTORY_SEPARATOR . 'Request' . DIRECTORY_SEPARATOR . 'AdministratorRequest.php'),
+                $this->replaceNamespace('RoleRequest.php', __DIR__ . '/Http/Requests/') => app_path('Http' . DIRECTORY_SEPARATOR . 'Request' . DIRECTORY_SEPARATOR . 'RoleRequest.php')
                     ], 'admin-request');
             //VIEWS
             $this->publishes([__DIR__ . '/resources/views' => resource_path('views/admin')], 'admin-views');
@@ -85,9 +84,10 @@ class AdminServiceProvider extends ServiceProvider
             $this->publishes([__DIR__ . '/database/seeds' => database_path('seeds')], 'admin-seeds');
             //ASSETS
             $this->publishes([__DIR__ . '/public' => public_path('multidots/admin')], 'admin-assets');
+            $this->publishes([__DIR__ . '/config' => public_path('config')], 'admin-config');
 
             // Register commands
-            $this->app->bind('admin:make', function ($app) {
+            $this->app->bind('multidots-admin:install', function ($app) {
                 return new Admin();
             });
         }
@@ -146,98 +146,17 @@ class AdminServiceProvider extends ServiceProvider
 
     /**
      * 
-     * @param type $file
-     * @return type
      */
-    public function changeControllerNamespace($file)
+    public function replaceNamespace($file, $dir)
     {
-        $filename = public_path() . '/Temp/' . $file;
-        if (!is_dir(dirname($filename))) {
-            mkdir(dirname($filename), 0777, true);
+        $tempFile = public_path() . '/Temp/' . $file;
+        if (!is_dir(dirname($tempFile))) {
+            mkdir(dirname($tempFile), 0777, true);
         }
-        $writing = fopen($filename, 'w');
-        $contentData = array_map(array($this, 'replaceControllerNameSpace'), file(__DIR__ . '/Http/Controllers/' . $file));
-        fclose($writing);
-        file_put_contents($filename, implode('', $contentData));
+        $str = str_replace("Multidots\Admin", "App", file_get_contents($dir . $file));
+        file_put_contents($tempFile, $str);
 
-        return $filename;
-    }
-
-    /**
-     * 
-     * @param type $data
-     * @return string
-     */
-    public function replaceControllerNameSpace($data)
-    {
-        if (stristr($data, 'namespace')) {
-            return "namespace App\Http\Controllers\Admin;\n";
-        }
-        return $data;
-    }
-
-    /**
-     * 
-     * @param type $file
-     * @return type
-     */
-    public function changeModelNamespace($file)
-    {
-        $filename = public_path() . '/Temp/' . $file;
-        if (!is_dir(dirname($filename))) {
-            mkdir(dirname($filename), 0777, true);
-        }
-        $writing = fopen($filename, 'w');
-        $contentData = array_map(array($this, 'replaceModelNameSpace'), file(__DIR__ . '/Models/' . $file));
-        fclose($writing);
-        file_put_contents($filename, implode('', $contentData));
-
-        return $filename;
-    }
-
-    /**
-     * 
-     * @param type $data
-     * @return string
-     */
-    public function replaceModelNameSpace($data)
-    {
-        if (stristr($data, 'namespace')) {
-            return "namespace App\Models;\n";
-        }
-        return $data;
-    }
-
-    /**
-     * 
-     * @param type $file
-     * @return type
-     */
-    public function changeRequestNamespace($file)
-    {
-        $filename = public_path() . '/Temp/' . $file;
-        if (!is_dir(dirname($filename))) {
-            mkdir(dirname($filename), 0777, true);
-        }
-        $writing = fopen($filename, 'w');
-        $contentData = array_map(array($this, 'replaceRequestNameSpace'), file(__DIR__ . '/Http/Requests/' . $file));
-        fclose($writing);
-        file_put_contents($filename, implode('', $contentData));
-
-        return $filename;
-    }
-
-    /**
-     * 
-     * @param type $data
-     * @return string
-     */
-    public function replaceRequestNameSpace($data)
-    {
-        if (stristr($data, 'namespace')) {
-            return "namespace App\Http\Requests;\n";
-        }
-        return $data;
+        return $tempFile;
     }
 
 }

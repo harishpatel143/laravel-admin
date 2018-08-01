@@ -3,7 +3,7 @@
 namespace Multidots\Admin\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Multidots\Admin\Model\Administrator;
+use Multidots\Admin\Models\Administrator;
 use Auth;
 use Multidots\Admin\Helpers\MDImageHelper;
 use Multidots\Admin\Http\Requests\AdministratorRequest;

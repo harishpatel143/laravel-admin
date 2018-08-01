@@ -1,6 +1,6 @@
 <?php
 
-namespace Multidots\Admin\Model;
+namespace Multidots\Admin\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;

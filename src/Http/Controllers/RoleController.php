@@ -4,8 +4,8 @@ namespace Multidots\Admin\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Multidots\Admin\Requests\RoleRequest;
-use Multidots\Admin\Model\Role;
-use Multidots\Admin\Model\Permission;
+use Multidots\Admin\Models\Role;
+use Multidots\Admin\Models\Permission;
 use Cache;
 use Exception;
 use Illuminate\Http\Request;
