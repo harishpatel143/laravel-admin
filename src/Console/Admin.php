@@ -39,17 +39,17 @@ class Admin extends Command
      */
     public function handle()
     {
-        $this->info('Welcome to Multidots Admin Panel');
-        $this->info('Publishing Admin Controllers, Models, Views and Migrations');
-        $this->info('1. Publishing File');
-        $this->publishAdminFile();
-        $this->info('2. Running migration');
-        $this->call('migrate');
-        $this->info('3. Create Role');
-        $this->createRole();
-        $this->info('4. Create Admin');
-        $this->createAdmin();
-        $this->info('5. Append routes to web.php');
+//        $this->info('Welcome to Multidots Admin Panel');
+//        $this->info('Publishing Admin Controllers, Models, Views and Migrations');
+//        $this->info('1. Publishing File');
+//        $this->publishAdminFile();
+//        $this->info('2. Running migration');
+//        $this->call('migrate');
+//        $this->info('3. Create Role');
+//        $this->createRole();
+//        $this->info('4. Create Admin');
+//        $this->createAdmin();
+//        $this->info('5. Append routes to web.php');
         $this->appendRoutes();
         $this->removeTempFile();
         $code = Artisan::call('cache:clear');
@@ -107,7 +107,7 @@ class Admin extends Command
      */
     public function appendRoutes()
     {
-        file_put_contents(base_path('routes/web.php'), file_get_contents(__DIR__ . '/routes/web.php'), FILE_APPEND);
+        file_put_contents(base_path('routes/web.php'), file_get_contents(__DIR__ . '/../routes/web.stub'), FILE_APPEND);
     }
 
     /**
