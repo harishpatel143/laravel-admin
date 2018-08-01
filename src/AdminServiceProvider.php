@@ -153,9 +153,11 @@ class AdminServiceProvider extends ServiceProvider
         if (!is_dir(dirname($tempFile))) {
             mkdir(dirname($tempFile), 0777, true);
         }
-        $str = str_replace("Multidots\Admin", "App", file_get_contents($dir . $file));
-        file_put_contents($tempFile, $str);
-
+        $string = str_replace("Multidots\Admin", "App", file_get_contents($dir . $file));
+        file_put_contents($tempFile, $string);
+        $string = str_replace("App\Http\Controllers", "App\Http\Controllers\Admin", file_get_contents($tempFile));
+        file_put_contents($tempFile, $string);
+        
         return $tempFile;
     }
 
