@@ -3,7 +3,7 @@
 namespace Multidots\Admin\Http\Controllers;
 
 use Auth;
-use App\Http\Controllers\Controller;
+use Multidots\Admin\Http\Controllers\Controller;
 use Multidots\Admin\Models\Administrator;
 use Multidots\Admin\Models\Role;
 use Exception;

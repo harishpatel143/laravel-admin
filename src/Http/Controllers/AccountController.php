@@ -2,7 +2,7 @@
 
 namespace Multidots\Admin\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Multidots\Admin\Http\Controllers\Controller;
 use Multidots\Admin\Models\Administrator;
 use Auth;
 use Multidots\Admin\Helpers\MDImageHelper;
