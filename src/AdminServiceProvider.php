@@ -157,7 +157,7 @@ class AdminServiceProvider extends ServiceProvider
         file_put_contents($tempFile, $string);
         $string = str_replace("App\Http\Controllers", "App\Http\Controllers\Admin", file_get_contents($tempFile));
         file_put_contents($tempFile, $string);
-        $string = str_replace("admin::", "", file_get_contents($tempFile));
+        $string = str_replace("admin::", "admin.", file_get_contents($tempFile));
         file_put_contents($tempFile, $string);
 
         return $tempFile;
