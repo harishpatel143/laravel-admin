@@ -91,7 +91,7 @@ class AdminInstall extends Command
         $data['last_name'] = $this->ask('Last name');
         $data['user_name'] = $this->ask('Enter username');
         $data['email'] = $this->ask('Email');
-        $data['password'] = bcrypt($this->secret('Administrator password'));
+        $data['password'] = $this->secret('Administrator password');
         $data['avatar'] = 'default-user.png';
         $data['status'] = 1;
         $data['role_id'] = 1;
