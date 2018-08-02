@@ -129,7 +129,7 @@ class RoleController extends Controller
                 $request->session()->flash('error', 'Role could not be saved. Please, try again.');
             }
         } catch (Exception $ex) {
-            return response()->view('admin.errors.404');
+            return response()->view('admin::errors.404');
         }
     }
 
@@ -147,7 +147,7 @@ class RoleController extends Controller
 
             return view('admin::role.edit', compact('roles'));
         } catch (Exception $ex) {
-            return response()->view('admin.errors.404');
+            return response()->view('admin::errors.404');
         }
     }
 
@@ -176,7 +176,7 @@ class RoleController extends Controller
                 $request->session()->flash('error', 'Role could not be updated. Please, try again.');
             }
         } catch (Exception $ex) {
-            return response()->view('admin.errors.404');
+            return response()->view('admin::errors.404');
         }
     }
 
@@ -200,7 +200,7 @@ class RoleController extends Controller
                 $request->session()->flash('error', 'Role can not be deleted. Please try again.');
             }
         } catch (Exception $ex) {
-            return response()->view('admin.errors.404');
+            return response()->view('admin::errors.404');
         }
     }
 
@@ -247,7 +247,7 @@ class RoleController extends Controller
                 $request->session()->flash('error', 'Permission could not be saved. Please, try again.');
             }
         } catch (Exception $ex) {
-            return response()->view('admin.errors.404');
+            return response()->view('admin::errors.404');
         }
     }
 

@@ -66,7 +66,7 @@ class AccountController extends Controller
                 $request->session()->flash('error', 'Profile could not be updated. Please, try again.');
             }
         } catch (Exception $ex) {
-            return response()->view('admin.errors.404');
+            return response()->view('admin::errors.404');
         }
     }
 

@@ -155,7 +155,7 @@ class AdministratorController extends Controller
                 $request->session()->flash('error', 'Admin could not be saved. Please, try again.');
             }
         } catch (Exception $ex) {
-            return response()->view('admin.errors.404');
+            return response()->view('admin::errors.404');
         }
     }
 
@@ -174,7 +174,7 @@ class AdministratorController extends Controller
 
             return view('admin::administrators.view', compact('administrator', 'statusList'));
         } catch (Exception $ex) {
-            return response()->view('admin.errors.404');
+            return response()->view('admin::errors.404');
         }
     }
 
@@ -193,7 +193,7 @@ class AdministratorController extends Controller
 
             return view('admin::administrators.edit', compact('administrators', 'roles'));
         } catch (Exception $ex) {
-            return response()->view('admin.errors.404');
+            return response()->view('admin::errors.404');
         }
     }
 
@@ -241,7 +241,7 @@ class AdministratorController extends Controller
                 $request->session()->flash('error', 'Admin can not be deleted. Please try again.');
             }
         } catch (Exception $ex) {
-            return response()->view('admin.errors.404');
+            return response()->view('admin::errors.404');
         }
     }
 
