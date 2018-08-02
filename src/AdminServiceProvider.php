@@ -85,6 +85,7 @@ class AdminServiceProvider extends ServiceProvider
             //ASSETS
             $this->publishes([__DIR__ . '/public' => public_path('multidots/admin')], 'admin-assets');
             $this->publishes([__DIR__ . '/config' => config_path()], 'admin-config');
+            $this->publishes([__DIR__ . '/helpers.php' => app_path('Http' . DIRECTORY_SEPARATOR . 'helpers.php')], 'admin-helper');
 
             // Register commands
             $this->app->bind('multidots-admin:install', function ($app) {
