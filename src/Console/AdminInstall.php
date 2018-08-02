@@ -44,13 +44,13 @@ class AdminInstall extends Command
         $this->publishAdminFile();
         $this->info('2. Running migration');
         $this->call('migrate');
-        $this->info('3. Create Role');
-        $this->createRole();
-        $this->info('4. Create Admin');
-        $this->createAdmin();
-        $this->info('5. Append routes to web.php');
+        $this->info('3. Append routes to web.php');
         $this->appendRoutes();
         $this->removeTempFile();
+        $this->info('4. Create Role');
+        $this->createRole();
+        $this->info('5. Create Admin');
+        $this->createAdmin();
         Artisan::call('cache:clear');
         $this->info('Package install successfuly.');
         $this->info('Run on -> http://127.0.0.1:8000/admin/ ');
