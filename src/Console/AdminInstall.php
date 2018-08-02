@@ -89,7 +89,7 @@ class AdminInstall extends Command
         $this->info('Please enter admin details');
         $data['first_name'] = $this->ask('First name');
         $data['last_name'] = $this->ask('Last name');
-        $data['user_name'] = $this->ask('Enter username');
+        $data['username'] = $this->ask('Enter username');
         $data['email'] = $this->ask('Email');
         $data['password'] = $this->secret('Administrator password');
         $data['avatar'] = 'default-user.png';
