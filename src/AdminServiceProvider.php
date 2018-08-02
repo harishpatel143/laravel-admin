@@ -81,6 +81,10 @@ class AdminServiceProvider extends ServiceProvider
                 $this->replaceNamespace('CheckRolePermission.php', __DIR__ . '/Traits/') => app_path('Traits' . DIRECTORY_SEPARATOR . 'CheckRolePermission.php'),
                 $this->replaceNamespace('Permissions.php', __DIR__ . '/Traits/') => app_path('Traits' . DIRECTORY_SEPARATOR . 'Permissions.php'),
                     ], 'admin-traits');
+            //Traits
+            $this->publishes([
+                $this->replaceNamespace('MDImageHelper.php', __DIR__ . '/Helpers/') => app_path('Helpers' . DIRECTORY_SEPARATOR . 'MDImageHelper.php'),
+                    ], 'admin-md-helper');
             //VIEWS
             $this->publishes([__DIR__ . '/resources/views' => resource_path('views/admin')], 'admin-views');
             //MIGRATIONS
