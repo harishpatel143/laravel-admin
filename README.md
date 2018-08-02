@@ -57,7 +57,61 @@ php artisan multidots-admin:install
 
 In this command ask you for create roll and default admin for the admin panel. enter the correct information.
 
-### You are almost done!
+#### You are almost done!
+
+### Before you run the application!
+  
+  Open the App\Provider\AppServiveProvider.php file create a method called as registerHelper() add the following code and call this method from boot() method. You AppServiveProvider.php file Loop like this...
+
+```php
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
+
+class AppServiceProvider extends ServiceProvider
+{
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Schema::defaultStringLength(191);
+        $this->registerHelpers();
+    }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * Register helpers file
+     */
+    public function registerHelpers()
+    {
+        // Load the helpers in app/Http/helpers.php
+        if (file_exists($file = app_path('Http/helpers.php'))) {
+            require $file;
+        }
+    }
+
+}
+
+
+```
+It will registerthe helper function that we use in our admin package.
+
 
 ### Run the laravel application
 
