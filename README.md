@@ -71,7 +71,7 @@ In this command ask you for create roll and default admin for the admin panel. e
 
 ### Before you run the application!
   
-  Open the App\Provider\AppServiceProvider.php file create a method called as registerHelper() add the following code and call this method from boot() method. You AppServiveProvider.php file Loop like this...
+  Open the App\Provider\AppServiceProvider.php file create a method called as registerHelper() add the following code and call this method from boot() method. Your AppServiveProvider.php file Loop like this afteradding the code.
 
 ```php
 <?php

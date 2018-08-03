@@ -1,6 +1,6 @@
 {
     "name": "harish/laravel-admin",
-    "description": "This is demo admin panel for role, permission ,admin, and email template management.",
+    "description": "Laravel Admin Panel Package.",
     "type": "library",
     "license": "MIT",
     "authors": [
