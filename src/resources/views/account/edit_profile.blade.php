@@ -200,6 +200,134 @@ use Multidots\Admin\Traits\CheckRolePermission;
 @section('js')
 {{ Html::script(config('admin.public-js-css').'js/custom.js') }}
 <script type="text/javascript">
+    var handleValidation = function () {
+        var initPickers = function () {};
+        var handleAddAdminValidation = function () {
+            var form = $('#add-admin-form');
+            var error = $('.alert-danger', form);
+            var success = $('.alert-success', form);
+            form.validate({
+                errorElement: 'span', //default input error message container
+                errorClass: 'help-block help-block-error', // default input error message class
+                focusInvalid: false, // do not focus the last invalid input
+                ignore: "", // validate all fields including form hidden input
+                messages: {
+                    first_name: {
+                        required: "Please enter first name.",
+                        noSpaceAllow: "Space is not allowed in first name."
+                    },
+                    last_name: {
+                        required: "Please enter last name.",
+                        noSpaceAllow: "Space is not allowed in last name."
+                    },
+                    username: {
+                        required: "Please enter username.",
+                        onlyCharLetter: "Username is invalid.",
+                        remote: "Username already exists.",
+                        noSpaceAllow: "Space is not allowed in username.",
+                        minlength: "Username must be at least 6 characters."
+                    },
+                    email: {
+                        required: "Please enter email.",
+                        email: "Please enter valid email.",
+                        remote: "Email is already exists."
+                    },
+                    password: {
+                        required: "Please enter password.",
+                        customPassword: "Password must be 6 to 20 characters with 1 uppercase and 1 lowercase letter."
+                    },
+                    confirm_password: {
+                        equalTo: "Password and confirm password do not match.",
+                        required: "Please enter confirm password."
+                    },
+                    role_id: {
+                        required: "Please select role."
+                    }
+                },
+                rules: {
+                    first_name: {
+                        required: true,
+                        noSpaceAllow: true
+                    },
+                    last_name: {
+                        required: true,
+                        noSpaceAllow: true
+                    },
+                    username: {
+                        required: true,
+                        noSpaceAllow: true,
+                        minlength: 6,
+                        onlyCharLetter: true,
+                        remote: {
+                            type: "post",
+                            url: "/admin/account/check_username",
+                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                            data: {id: "{{ Auth::guard('admin')->user()->id }}"}
+                        }
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+                        remote: {
+                            url: "/admin/account/check_email",
+                            type: "post",
+                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                            data: {id: "{{ Auth::guard('admin')->user()->id }}"}
+                        }
+                    },
+                    password: {
+                        required: true,
+                        customPassword: true
+                    },
+                    confirm_password: {
+                        equalTo: "#password",
+                        required: true
+                    },
+                    role_id: {
+                        required: true
+                    }
+                },
+                invalidHandler: function (event, validator) { //display error alert on form submit
+                    success.hide();
+                    error.show();
+                },
+                highlight: function (element) { // hightlight error inputs
+                    $(element).closest('.form-group').addClass('has-error'); // set error class to the control group
+                },
+                unhighlight: function (element) { // revert the change done by hightlight
+                    $(element).closest('.form-group').removeClass('has-error'); // set error class to the control group
+                },
+                success: function (label) {
+                    label.closest('.form-group').removeClass('has-error'); // set success class to the control group
+                },
+                submitHandler: function (form) {
+                    $('.bong-loader').css('display', 'block');
+                    success.show();
+                    error.hide();
+                    form.submit();
+                },
+                errorPlacement: function (error, element) {
+                    if (element.attr("name") == "password") { // insert checkbox errors after the container                  
+                        error.insertAfter(element.parent("div"));
+                    } else if (element.attr("name") == 'permission[]') {
+                        error.insertAfter($(element).next('div'));
+                    } else if (element.attr("name") == 'role_id') {
+                        error.insertAfter($(element).next('span'));
+                    } else {
+                        error.insertAfter(element);
+                    }
+                }
+            });
+        };
+        return {
+            //main function to initiate the module
+            init: function () {
+                initPickers();
+                handleAddAdminValidation();
+
+            }
+        };
+    }();
     jQuery(document).ready(function () {
         $("#confirm_password,#password").on('keyup', function () {
             $('.generated-password').addClass('hidden').hide();

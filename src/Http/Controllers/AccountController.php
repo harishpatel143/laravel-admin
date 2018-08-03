@@ -110,8 +110,11 @@ class AccountController extends Controller
         if (!$request->ajax() && $request->isMethod('post')) {
             throw new NotFoundException();
         }
-        $checkEmail = Administrator::active()->where([['id', '<>', Auth::guard('admin')->user()->id], ['email', '=', $request->email]]);
-
+//        $checkEmail = Administratoemailr::active()->where([['id', '<>', Auth::guard('admin')->user()->id], ['email', '=', $request->email]]);
+        $checkEmail = Administrator::active()->where('email', $request['email']);
+        if (!empty($request['id'])) {
+            $checkEmail->where('id', '<>', $request['id']);
+        }
         $flag = $checkEmail->count() > 0 ? 'false' : 'true';
 
         return $flag;
@@ -129,11 +132,11 @@ class AccountController extends Controller
         if (!$request->ajax() && $request->isMethod('post')) {
             throw new NotFoundException();
         }
-        $checkUsername = Administrator::active()->where([['id', '<>', Auth::guard('admin')->user()->id], ['username', '=', $request->username]]);
-//        $checkUsername = Administrator::active()->where('username', $request['username']);
-//        if (!empty($request['id'])) {
-//            $checkUsername->where('id', '<>', $request['id']);
-//        }
+//        $checkUsername = Administrator::active()->where([['id', '<>', Auth::guard('admin')->user()->id], ['username', '=', $request->username]]);
+        $checkUsername = Administrator::active()->where('username', $request['username']);
+        if (!empty($request['id'])) {
+            $checkUsername->where('id', '<>', $request['id']);
+        }
         $flag = $checkUsername->count() > 0 ? 'false' : 'true';
 
         return $flag;

@@ -130,7 +130,109 @@
 {{ Html::script(config('admin.public-js-css').'js/custom.js') }}
 
 <script type="text/javascript">
+    var handleValidation = function () {
+        var initPickers = function () {};
+        var handleEditProfileValidation = function () {
+            var form = $('#edit-profile-form');
+            var error = $('.alert-danger', form);
+            var success = $('.alert-success', form);
+            form.validate({
+                errorElement: 'span', //default input error message container
+                errorClass: 'help-block help-block-error', // default input error message class
+                focusInvalid: false, // do not focus the last invalid input
+                ignore: "", // validate all fields including form hidden input
+                messages: {
+                    first_name: {
+                        required: "Please enter first name.",
+                        noSpace: "First name can not be empty.",
+                        onlyCharLetter: "First name is invalid."
+                    },
+                    last_name: {
+                        required: "Please enter last name.",
+                        noSpace: "Last name can not be empty.",
+                        onlyCharLetter: "Last name is invalid."
+                    },
+                    username: {
+                        required: "Please enter username.",
+                        remote: "Username already exists.",
+                        onlyCharLetter: "Username is invalid.",
+                        minlength: "Username must be at least 6 characters."
+                    },
+                    email: {
+                        required: "Please enter email.",
+                        email: "Please enter valid email.",
+                        remote: "Email is already exists."
+                    }
+                },
+                rules: {
+                    first_name: {
+                        required: true,
+                        noSpace: true,
+                        onlyCharLetter: true
+                    },
+                    last_name: {
+                        required: true,
+                        noSpace: true,
+                        onlyCharLetter: true,
+                    },
+                    username: {
+                        required: true,
+                        remote: {
+                            type: "post",
+                            url: "/admin/account/check_username",
+                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                            data: {id: "{{ $administrators->id }}"}
+                        },
+                        onlyCharLetter: true,
+                        minlength: 6,
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+                        remote: {
+                            url: "/admin/account/check_email",
+                            type: "post",
+                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                            data: {id: "{{ $administrators->id }}"}
+                        }
+                    }
+                },
+                invalidHandler: function (event, validator) { //display error alert on form submit
+                    success.hide();
+                    error.show();
+                },
+                highlight: function (element) { // hightlight error inputs
+                    $(element).closest('.form-group').addClass('has-error'); // set error class to the control group
+                },
+                unhighlight: function (element) { // revert the change done by hightlight
+                    $(element).closest('.form-group').removeClass('has-error'); // set error class to the control group
+                },
+                success: function (label) {
+                    label.closest('.form-group').removeClass('has-error'); // set success class to the control group
+                },
+                submitHandler: function (form) {
+                    $('.bong-loader').css('display', 'block');
+                    success.show();
+                    error.hide();
+                    form.submit();
+                },
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element);
+                }
+            });
+        };
+        return {
+            //main function to initiate the module
+            init: function () {
+                initPickers();
+                handleEditProfileValidation();
+
+            }
+        };
+    }();
+
     $(document).ready(function () {
+        handleValidation.init();
         $("#role_id").select2();
         $('input[name="status"]').bootstrapSwitch();
         $('input[name="status"]').on('switchChange.bootstrapSwitch', function (event, state) {
