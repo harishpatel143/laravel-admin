@@ -62,7 +62,7 @@ class AdminInstall extends Command
     public function publishAdminFile()
     {
         $this->callSilent('vendor:publish', [
-            '--tag' => ['admin-controllers', 'admin-models', 'admin-views', 'admin-seeds', 'admin-migrations', 'admin-assets', 'admin-request', 'admin-config', 'admin-helper','admin-traits'],
+            '--tag' => ['admin-controllers', 'admin-models', 'admin-views', 'admin-seeds', 'admin-migrations', 'admin-assets', 'admin-request', 'admin-config', 'admin-helper', 'admin-traits', 'admin-md-helper'],
             '--force' => true
         ]);
         $this->info('Files published successfully.');
