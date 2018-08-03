@@ -27,7 +27,7 @@ class ResetPasswordController extends Controller
      */
     public function showResetForm(Request $request, $token = null)
     {
-        config(['app.name' => 'Admin Reset Password']);
+        config(['app.name' => 'Administrator Reset Password']);
 
         return view('admin::adminAuth.passwords.reset')->with(['token' => $request->token, 'email' => $request->email]);
     }
@@ -71,7 +71,7 @@ class ResetPasswordController extends Controller
      */
     public function broker()
     {
-        return Password::broker('admin');
+        return Password::broker('administrators');
     }
 
     /**
@@ -81,7 +81,7 @@ class ResetPasswordController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('admin');
+        return Auth::guard('administrator');
     }
 
     /**
@@ -101,4 +101,5 @@ class ResetPasswordController extends Controller
 
         return $flag;
     }
+
 }
