@@ -38,7 +38,7 @@ class Administrator extends Model implements AuthenticatableContract, CanResetPa
      */
     public function __construct(array $attributes = [])
     {
-        
+
         $connection = config('admin.database.connection') ?: config('database.default');
 
         $this->setConnection($connection);
@@ -99,7 +99,8 @@ class Administrator extends Model implements AuthenticatableContract, CanResetPa
      */
     public function getAvatarAttribute()
     {
-        if (!empty($this->attributes['avatar']) && file_exists(public_path() . config('admin.public-js-css') . config('admin.ADMIN_CONST.ADMIN_IMAGE_URL') . $this->attributes['avatar'])) {
+
+        if (!empty($this->attributes['avatar']) && file_exists(public_path() . DIRECTORY_SEPARATOR . config('admin.public-js-css') . config('admin.ADMIN_CONST.ADMIN_IMAGE_URL') . $this->attributes['avatar'])) {
             return config('admin.public-js-css') . config('admin.ADMIN_CONST.ADMIN_IMAGE_URL') . $this->attributes['avatar'];
         } else {
             return config('admin.public-js-css') . config('admin.ADMIN_CONST.ADMIN_IMAGE_URL') . 'avatar.png';
