@@ -258,40 +258,37 @@ return [
 ```
 
 
-### Run the laravel application
-
-```php 
-  
-  php artinsa serve
-
-```
-
-### Go to the url http://127.0.0.1:8000/admin/
-
-
-
-
 #### For Email sending you have to configure the mail credetials in .env file
 
 -Emails is used to send Forgot password link.
 
+
+```php 
+
+    MAIL_DRIVER=smtp
+    MAIL_HOST=smtp.mailtrap.io
+    MAIL_PORT=2525
+    MAIL_USERNAME=null
+    MAIL_PASSWORD=null
+    MAIL_ENCRYPTION=null
+
 ```
-MAIL_DRIVER=smtp
-MAIL_HOST=smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=null
-MAIL_PASSWORD=null
-MAIL_ENCRYPTION=null
 
+#### Run the laravel application
+
+```php 
+  
+      php artinsa serve
 
 ```
 
+#### Go to the url http://127.0.0.1:8000/admin/
 
 
 #### Your Admin panel is install successfully.
 #### Thank you 
 
-Feel Free to rais any issue in this Laravel Admin Panel Package. :) :)
+        -Feel Free to rais any issue in this Laravel Admin Panel Package. :) :)
 
 
 
