@@ -1,7 +1,14 @@
 
 ## About Laravel Admin Panel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+This is Laravel Admin panel package,Developed for quick start with any new project come in development.
+It will save time for basic functionlity,Like:
+
+- Administator Login, logout, forgot password, reset password,Edit profile,
+- Add, edit, View, Delete and listing of the Administators
+- Add, edit, view, Delete and listing of the Roles
+- Add, edit, view, Delete ,listing and manage the permission of the Role.
+
 
 ## Step to Install
 
