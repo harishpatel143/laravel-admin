@@ -13,9 +13,10 @@ It will save time for basic functionlity,Like:
 ## Step to Install
 
 ### Run the following command to install new laravel appplication setup.
+```
+    composer create-project --prefer-dist laravel/laravel blog
 
-composer create-project --prefer-dist laravel/laravel blog
-
+```
 ### After installing laravel application configgure database details in the env file
 ```php 
 
