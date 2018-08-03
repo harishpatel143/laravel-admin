@@ -112,6 +112,25 @@ class AppServiceProvider extends ServiceProvider
 ```
 It will registerthe helper function that we use in our admin package.
 
+#### For store images in public directory add new disk in config/filesystem.php 
+
+```php
+
+'disks' => [
+    
+    .......
+    
+    'public_local' => [
+        'driver' => 'local',
+        'root' => public_path(''),
+    ],
+    
+    .......
+    
+],
+
+```
+
 
 ### Run the laravel application
 
