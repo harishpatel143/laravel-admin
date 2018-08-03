@@ -199,4 +199,11 @@ use Multidots\Admin\Traits\CheckRolePermission;
 
 @section('js')
 {{ Html::script(config('admin.public-js-css').'js/custom.js') }}
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        $("#confirm_password,#password").on('keyup', function () {
+            $('.generated-password').addClass('hidden').hide();
+        });
+    });
+</script>
 @endSection

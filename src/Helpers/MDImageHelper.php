@@ -85,10 +85,13 @@ class MDImageHelper
         $uploadedFilePath = $uploadToPath . $filename;
         $uploadDirectoryName = $uploadToPath;
         if ($uploadedFile->getpathName()) {
-            Storage::putFileAs($uploadDirectoryName, $uploadedFile, $filename, 'public');
+            Storage::putFileAs($uploadDirectoryName, $uploadedFile, $filename, 'public_local');
         } else {
             return false;
         }
+        echo '<pre>';
+        print_r($uploadDirectoryName);
+        die;
         return ['imagePath' => $uploadedFilePath, 'imageName' => $filename];
     }
 

@@ -92,7 +92,9 @@ class AccountController extends Controller
         if (!empty($imageArray->file('avatar')->getFilename()) && $imageArray->file('avatar')->getError() == 0) {
             //Upload image
 //            MDImageHelper::setupVars(['uploadBasePath' => config('admin.ADMIN_CONST.ADMIN_IMAGE_PATH')]);
-            $uploadedImage = MDImageHelper::uploadImage($imageArray->file('avatar'));
+//            $uploadedImage = MDImageHelper::uploadImage($imageArray->file('avatar'));
+            $uploadedImage = MDImageHelper::uploadImage($imageArray->file('avatar'), config('admin.public-js-css') . config('admin.ADMIN_CONST.ADMIN_IMAGE_PATH'));
+
             $adminImage = basename($uploadedImage['imageName']);
 
             return $adminImage;

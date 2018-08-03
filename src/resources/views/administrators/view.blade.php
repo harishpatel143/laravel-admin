@@ -26,7 +26,7 @@
                     <li class="active"><a href="#personalInfo" data-toggle="tab">Personal Info</a></li>
                     <li class="edit-icon-info">
                         <?php
-                        echo ((Multidots\Admin\Traits\CheckRolePermission::hasAccess('edit-administrator')) ? '<a href="' . route('admins-edit', [$administrator->id]) . '" title="Edit administrator "><i class="fa fa-edit"></i></a>' : '');
+                        echo ((Multidots\Admin\Traits\CheckRolePermission::hasAccess('edit-administrator')) ? '<a href="' . route('administrators-edit', [$administrator->id]) . '" title="Edit administrator "><i class="fa fa-edit"></i></a>' : '');
                         ?>
                     </li>
                 </ul>

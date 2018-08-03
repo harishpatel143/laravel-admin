@@ -82,7 +82,7 @@ return [
         'role_permission_table' => 'permission_role',
     ],
     'ADMIN_CONST' => [
-        'ADMIN_IMAGE_PATH' => public_path('uploads' . DIRECTORY_SEPARATOR . 'admins' . DIRECTORY_SEPARATOR),
+        'ADMIN_IMAGE_PATH' => 'uploads/admins/',
         'ADMIN_IMAGE_URL' => 'uploads/admins/',
         'DEFAULT_IMAGE_URL' => 'img/default-avatar.png',
         'STATUS_DELETE' => 2,

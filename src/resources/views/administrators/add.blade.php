@@ -162,6 +162,9 @@
         $("#role_id").on('change', function () {
             $(this).valid();
         });
+        $("#confirm_password,#password").on('keyup', function () {
+            $('.generated-password').addClass('hidden').hide();
+        });
     });
 </script>
 @endSection
