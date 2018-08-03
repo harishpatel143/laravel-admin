@@ -108,8 +108,9 @@ class Administrator extends Model implements AuthenticatableContract, CanResetPa
     }
 
     //Send password reset notification
-//    public function sendPasswordResetNotification($token)
-//    {
-//        $this->notify(new AdminResetPasswordNotification($token));
-//    }
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new AdminResetPasswordNotification($token));
+    }
+
 }

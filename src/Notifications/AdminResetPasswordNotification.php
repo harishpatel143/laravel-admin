@@ -44,8 +44,7 @@ class AdminResetPasswordNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $link = url("/admin/account/password/reset/token=" . $this->token);
-
+        $link = url(config('admin.ADMIN_CONST.ADMIN_PREFIX') . '/account/password/reset', $this->token);
         return ( new MailMessage)
                         ->from('multidots@example.com')
                         ->subject('Reset your password')
@@ -64,4 +63,5 @@ class AdminResetPasswordNotification extends Notification
     {
         return [];
     }
+
 }

@@ -71,9 +71,7 @@ class ForgotPasswordController extends Controller
      */
     public function sendResetLinkEmail(Request $request)
     {
-
         $this->validateEmail($request);
-
         $user_check = Administrator::select('status')->where('email', '=', $request->email)->where('status', '=', 1)->first();
         Session::put('email', $request->email);
         if (empty($user_check)) {
@@ -86,6 +84,7 @@ class ForgotPasswordController extends Controller
         $response = $this->broker()->sendResetLink(
                 $request->only('email')
         );
+        
 
         return $response == Password::RESET_LINK_SENT ? $this->sendResetLinkResponse($response) : $this->sendResetLinkFailedResponse($request, $response);
     }

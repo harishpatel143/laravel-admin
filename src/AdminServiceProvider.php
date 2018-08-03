@@ -85,6 +85,10 @@ class AdminServiceProvider extends ServiceProvider
             $this->publishes([
                 $this->replaceNamespace('MDImageHelper.php', __DIR__ . '/Helpers/') => app_path('Helpers' . DIRECTORY_SEPARATOR . 'MDImageHelper.php'),
                     ], 'admin-md-helper');
+            //Traits
+            $this->publishes([
+                $this->replaceNamespace('AdminResetPasswordNotification.php', __DIR__ . '/Notifications/') => app_path('Notifications' . DIRECTORY_SEPARATOR . 'AdminResetPasswordNotification.php'),
+                    ], 'admin-notifications');
             //VIEWS
             $this->publishes([__DIR__ . '/resources/views' => resource_path('views/admin')], 'admin-views');
             //MIGRATIONS
