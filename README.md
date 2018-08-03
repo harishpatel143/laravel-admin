@@ -288,7 +288,7 @@ return [
 #### Your Admin panel is install successfully.
 #### Thank you 
 
-        -Feel Free to rais any issue in this Laravel Admin Panel Package. :) :)
+   -Feel Free to rais any issue in this Laravel Admin Panel Package :)
 
 
 
