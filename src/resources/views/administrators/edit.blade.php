@@ -132,8 +132,8 @@
 <script type="text/javascript">
     var handleValidation = function () {
         var initPickers = function () {};
-        var handleEditProfileValidation = function () {
-            var form = $('#edit-profile-form');
+        var handleEditAdminValidation = function () {
+            var form = $('#edit-admin-form');
             var error = $('.alert-danger', form);
             var success = $('.alert-success', form);
             form.validate({
@@ -144,17 +144,18 @@
                 messages: {
                     first_name: {
                         required: "Please enter first name.",
-                        noSpace: "First name can not be empty.",
+                        noSpaceAllow: "Space is not allowed in first name.",
                         onlyCharLetter: "First name is invalid."
                     },
                     last_name: {
                         required: "Please enter last name.",
-                        noSpace: "Last name can not be empty.",
+                        noSpaceAllow: "Space is not allowed in last name",
                         onlyCharLetter: "Last name is invalid."
                     },
                     username: {
                         required: "Please enter username.",
                         remote: "Username already exists.",
+                        noSpaceAllow: "Space is not allowed in username",
                         onlyCharLetter: "Username is invalid.",
                         minlength: "Username must be at least 6 characters."
                     },
@@ -162,29 +163,33 @@
                         required: "Please enter email.",
                         email: "Please enter valid email.",
                         remote: "Email is already exists."
+                    },
+                    role_id: {
+                        required: "Please select role."
                     }
                 },
                 rules: {
                     first_name: {
                         required: true,
-                        noSpace: true,
-                        onlyCharLetter: true
+                        noSpaceAllow: true,
+                        onlyCharLetter: true,
                     },
                     last_name: {
                         required: true,
-                        noSpace: true,
+                        noSpaceAllow: true,
                         onlyCharLetter: true,
                     },
                     username: {
                         required: true,
+                        noSpaceAllow: true,
+                        onlyCharLetter: true,
+                        minlength: 6,
                         remote: {
                             type: "post",
                             url: "/admin/account/check_username",
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                            data: {id: "{{ $administrators->id }}"}
-                        },
-                        onlyCharLetter: true,
-                        minlength: 6,
+                            data: {id: $('#id').val()}
+                        }
                     },
                     email: {
                         required: true,
@@ -193,8 +198,11 @@
                             url: "/admin/account/check_email",
                             type: "post",
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                            data: {id: "{{ $administrators->id }}"}
+                            data: {id: $('#id').val()}
                         }
+                    },
+                    role_id: {
+                        required: true
                     }
                 },
                 invalidHandler: function (event, validator) { //display error alert on form submit
@@ -217,16 +225,24 @@
                     form.submit();
                 },
                 errorPlacement: function (error, element) {
-                    error.insertAfter(element);
+                    if (element.attr("name") === "permissions[]") {
+                        error.insertAfter($(element).parents('.checkbox-list'));
+                    } else if (element.attr("name") == 'permission[]') {
+                        error.insertAfter($(element).next('div'));
+                    } else if (element.attr("name") == 'role_id') {
+                        error.insertAfter($(element).next('span'));
+                    } else {
+                        error.insertAfter(element);
+                    }
                 }
             });
         };
+
         return {
             //main function to initiate the module
             init: function () {
                 initPickers();
-                handleEditProfileValidation();
-
+                handleEditAdminValidation();
             }
         };
     }();

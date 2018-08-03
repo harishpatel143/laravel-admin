@@ -1,7 +1,3 @@
-<?php
-//echo '<pre>'; print_r(Auth::user()); die;
-?>
-
 @extends('layouts.app')
 
 @section('content')
