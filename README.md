@@ -13,11 +13,15 @@ It will save time for basic functionlity,Like:
 ## Step to Install
 
 ### Run the following command to install new laravel appplication setup.
-```
+
+```php
+
     composer create-project --prefer-dist laravel/laravel blog
 
 ```
+
 ### After installing laravel application configgure database details in the env file
+
 ```php 
 
     - DB_CONNECTION=mysql
@@ -65,11 +69,9 @@ php artisan multidots-admin:install
 
 In this command ask you for create roll and default admin for the admin panel. enter the correct information.
 
-#### You are almost done!
-
 ### Before you run the application!
   
-  Open the App\Provider\AppServiveProvider.php file create a method called as registerHelper() add the following code and call this method from boot() method. You AppServiveProvider.php file Loop like this...
+  Open the App\Provider\AppServiceProvider.php file create a method called as registerHelper() add the following code and call this method from boot() method. You AppServiveProvider.php file Loop like this...
 
 ```php
 <?php
@@ -256,21 +258,37 @@ return [
 ```
 
 
-### Run the laravel application
+#### For Email sending you have to configure the mail credetials in .env file
+
+-Emails is used to send Forgot password link.
+
 
 ```php 
-  
-  php artinsa serve
+
+    MAIL_DRIVER=smtp
+    MAIL_HOST=smtp.mailtrap.io
+    MAIL_PORT=2525
+    MAIL_USERNAME=null
+    MAIL_PASSWORD=null
+    MAIL_ENCRYPTION=null
 
 ```
 
-### Go to the url http://127.0.0.1:8000/admin/
+#### Run the laravel application
 
-## Your Admin panel is install successfully
+```php 
+  
+      php artinsa serve
+
+```
+
+#### Go to the url http://127.0.0.1:8000/admin/
 
 
+#### Your Admin panel is install successfully.
+#### Thank you 
 
-
+   -Feel Free to rais any issue in this Laravel Admin Panel Package :)
 
 
 
