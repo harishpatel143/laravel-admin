@@ -5,23 +5,15 @@ This is Laravel Admin panel package, Developed for a quick start with any new pr
 It will save time for basic functionality,Like:
 
 ### Step to Install
-    Create a new project or install in the existing project.
-    Setup new laravel application if you new to laravel refer the link to install new laravel project.
-	
-    https://laravel.com/docs/5.6/installation
+#### You can install this package into your Laravel application by running this bellow command into your root directory.
 
-### Run the following composer command to install the multidots admin panel.  
+	composer require harish/laravel-admin
 
-        composer require harish/laravel-admin
+#### Publishes all the things in your application via bellow command.
 
-### After installation publishes all the things in your application via bellow command.
-Note: Before running this command be sure that you have configured database settings in your .env file.
+	php artisan multidots-admin:install
 
-        php artisan multidots-admin:install
-
-   This command publishes all the controller, models, view, request file and routes files to your local environment. And also migrate the database.
-
-### For store images in public directory add a new disk in config/filesystem.php 
+#### For store images in public directory add a new disk in config/filesystem.php 
 
 ```php
 
@@ -41,7 +33,7 @@ Note: Before running this command be sure that you have configured database sett
 ```
 #### Define an Authentication guard for administrator
 
-For that open your config/auth.php file and modify it with below code. 
+Open your config/auth.php file and modify it as below code. 
 
 ```php
 
@@ -85,17 +77,26 @@ return [
     
 ];
 ```
+#### Database migration
+
+	php artisan migrate
+
+#### Database seeding
+
+	php artisan db:seed --class=AdministratorsTableSeeder
 
 #### Run the laravel application
 
-  
-            php artisan serve
+    	php artisan serve
 
 
 #### Go to the URL http://127.0.0.1:8000/admin/
 
     Your Admin panel is installed successfully.
-
+    
+	Default user: demo@gmail.com
+	Default password: thinker99
+	
 #### Thank you 
 
   -Feel Free to rais any issue in this Laravel Admin Panel Package :)
