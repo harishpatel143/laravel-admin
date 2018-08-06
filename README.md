@@ -42,35 +42,35 @@ return [
    .........
    
     'guards' => [
-    .......
+            .......
 
-    'administrator' => [
-            'driver' => 'session',
-            'provider' => 'administrators',
-        ],
-    .......
+            'administrator' => [
+                    'driver' => 'session',
+                    'provider' => 'administrators',
+                ],
+            .......
     ],
     
     
     'providers' => [
-    ..........
+            ..........
 
-    'administrators' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Administrator::class,
-        ]
-    .........
+            'administrators' => [
+                    'driver' => 'eloquent',
+                    'model' => App\Models\Administrator::class,
+                ]
+            .........
     ],
     
     'passwords' => [
-    ..........
+            ..........
 
-    'administrators' => [
-            'provider' => 'administrators',
-            'table' => 'administrator_password_resets',
-            'expire' => 60,
-        ],
-    ..........
+            'administrators' => [
+                    'provider' => 'administrators',
+                    'table' => 'administrator_password_resets',
+                    'expire' => 60,
+                ],
+            ..........
     ],
     
 ];
