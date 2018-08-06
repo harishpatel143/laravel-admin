@@ -20,7 +20,7 @@ class AuthenticateAdmin
 //        echo '<pre>'; print_r('AuthenticateAdmin'); die;
         // If request does not comes from logged in administratore
         // then he shall be redirected to Login page
-        if (!Auth::guard('admin')->check()) {
+        if (!Auth::guard('administrator')->check()) {
             return redirect()->route('admin-login');
         }
 

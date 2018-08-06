@@ -37,10 +37,10 @@ $sidebarMenus = [
     <!-- Sidebar user panel -->
     <div class="user-panel">
         <div class="pull-left image">
-            <img src="{{ asset(Auth::guard('admin')->user()->avatar) }}" class="img-circle" alt="User Image" style="height: 45px;">
+            <img src="{{ asset(Auth::guard('administrator')->user()->avatar) }}" class="img-circle" alt="User Image" style="height: 45px;">
         </div>
         <div class="pull-left info" style="margin-top: 7px;">
-            <p>{{ Auth::guard('admin')->user()->full_name }}</p>       
+            <p>{{ Auth::guard('administrator')->user()->full_name }}</p>       
         </div>
     </div>
     <!-- /.search form -->

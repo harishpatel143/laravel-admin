@@ -36,7 +36,7 @@ class LoginController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('admin');
+        return Auth::guard('administrator');
     }
 
     /**
@@ -142,7 +142,7 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request)
     {
-        $adminData = Administrator::find(Auth::guard('admin')->user()->id);
+        $adminData = Administrator::find(Auth::guard('administrator')->user()->id);
         $adminData->last_login = date('Y-m-d H:i:s');
         $adminData->save();
 

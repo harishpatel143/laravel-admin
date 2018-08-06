@@ -23,7 +23,7 @@ class AccountController extends Controller
     public function updateProfile(AdministratorRequest $request)
     {
         try {
-            $admin = Administrator::findOrFail(Auth::guard('admin')->user()->id);
+            $admin = Administrator::findOrFail(Auth::guard('administrator')->user()->id);
             $updateData = $request->all();
             // Change Password
             if (!empty($request->password) && !empty($request->current_password)) {
@@ -110,7 +110,7 @@ class AccountController extends Controller
         if (!$request->ajax() && $request->isMethod('post')) {
             throw new NotFoundException();
         }
-//        $checkEmail = Administratoemailr::active()->where([['id', '<>', Auth::guard('admin')->user()->id], ['email', '=', $request->email]]);
+//        $checkEmail = Administratoemailr::active()->where([['id', '<>', Auth::guard('administrator')->user()->id], ['email', '=', $request->email]]);
         $checkEmail = Administrator::active()->where('email', $request['email']);
         if (!empty($request['id'])) {
             $checkEmail->where('id', '<>', $request['id']);
@@ -132,7 +132,7 @@ class AccountController extends Controller
         if (!$request->ajax() && $request->isMethod('post')) {
             throw new NotFoundException();
         }
-//        $checkUsername = Administrator::active()->where([['id', '<>', Auth::guard('admin')->user()->id], ['username', '=', $request->username]]);
+//        $checkUsername = Administrator::active()->where([['id', '<>', Auth::guard('administrator')->user()->id], ['username', '=', $request->username]]);
         $checkUsername = Administrator::active()->where('username', $request['username']);
         if (!empty($request['id'])) {
             $checkUsername->where('id', '<>', $request['id']);
@@ -155,7 +155,7 @@ class AccountController extends Controller
             throw new NotFoundException();
         }
         $flag = 'true';
-        $admin = Administrator::active()->select('id', 'password')->findorfail(Auth::guard('admin')->user()->id);
+        $admin = Administrator::active()->select('id', 'password')->findorfail(Auth::guard('administrator')->user()->id);
         if (!Hash::check($request['current_password'], $admin->password)) {
             $flag = 'false';
         }

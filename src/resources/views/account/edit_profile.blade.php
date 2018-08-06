@@ -17,9 +17,9 @@ use Multidots\Admin\Traits\CheckRolePermission;
             <!-- Profile Image -->
             <div class="box box-primary">
                 <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle" src="{{  asset(Auth::guard('admin')->user()->avatar) }}" alt="User profile picture">
-                    <h3 class="profile-username text-center">{{ Auth::guard('admin')->user()->full_name }}</h3>
-                    <p class="text-muted text-center">{{ Auth::guard('admin')->user()->role->name }}</p>
+                    <img class="profile-user-img img-responsive img-circle" src="{{  asset(Auth::guard('administrator')->user()->avatar) }}" alt="User profile picture">
+                    <h3 class="profile-username text-center">{{ Auth::guard('administrator')->user()->full_name }}</h3>
+                    <p class="text-muted text-center">{{ Auth::guard('administrator')->user()->role->name }}</p>
                 </div>                
             </div>
             <!-- End Profile Image -->
@@ -39,12 +39,12 @@ use Multidots\Admin\Traits\CheckRolePermission;
                     @if (CheckRolePermission::hasAccess('manage-personal-info'))
                     <div class="active tab-pane" id="personalInfo">
                         {!! Form::open(['route' => ['update-profile','domain' => config('app.ADMIN_CONST.ADMIN_DOMAIN_NAME')], 'name' => 'edit-profile-form', 'id' => 'edit-profile-form', 'class' => 'form-horizontal']) !!}
-                        {{ Form::hidden('id', Auth::guard('admin')->user()->id) }}
+                        {{ Form::hidden('id', Auth::guard('administrator')->user()->id) }}
                         {{ Form::hidden('form_type', 'edit_profile') }}
                         <div class="form-group {{ $errors->has('first_name') ? ' has-error' : '' }}">
                             {!! Html::decode(Form::label('First Name', 'First Name <span aria-required="true" class="required"> * </span>', ['class' => 'col-sm-2 control-label'])) !!}
                             <div class="col-sm-10">
-                                {{ Form::text('first_name', old('first_name') ? old('first_name') :  Auth::guard('admin')->user()->first_name, ['id' => 'first_name', 'placeholder' => 'Enter first name', 'class' => 'form-control']) }}
+                                {{ Form::text('first_name', old('first_name') ? old('first_name') :  Auth::guard('administrator')->user()->first_name, ['id' => 'first_name', 'placeholder' => 'Enter first name', 'class' => 'form-control']) }}
                                 @if ($errors->has('first_name'))
                                 <span class="help-block">
                                     {{ $errors->first('first_name') }}
@@ -55,7 +55,7 @@ use Multidots\Admin\Traits\CheckRolePermission;
                         <div class="form-group {{ $errors->has('last_name') ? ' has-error' : '' }}">
                             {!! Html::decode(Form::label('Last Name', 'Last Name <span aria-required="true" class="required"> * </span>', ['class' => 'col-sm-2 control-label'])) !!}
                             <div class="col-sm-10">
-                                {{ Form::text('last_name', old('last_name') ? old('last_name') :  Auth::guard('admin')->user()->last_name, ['id' => 'last_name', 'placeholder' => 'Enter last name', 'class' => 'form-control']) }}
+                                {{ Form::text('last_name', old('last_name') ? old('last_name') :  Auth::guard('administrator')->user()->last_name, ['id' => 'last_name', 'placeholder' => 'Enter last name', 'class' => 'form-control']) }}
                                 @if ($errors->has('last_name'))
                                 <span class="help-block">
                                     {{ $errors->first('last_name') }}
@@ -66,7 +66,7 @@ use Multidots\Admin\Traits\CheckRolePermission;
                         <div class="form-group {{ $errors->has('username') ? ' has-error' : '' }}">
                             {!! Html::decode(Form::label('Username', 'Username <span aria-required="true" class="required"> * </span>', ['class' => 'col-sm-2 control-label'])) !!}
                             <div class="col-sm-10">
-                                {{ Form::text('username', old('username') ? old('username') :  Auth::guard('admin')->user()->username, ['id' => 'username', 'placeholder' => 'Enter username', 'class' => 'form-control']) }}
+                                {{ Form::text('username', old('username') ? old('username') :  Auth::guard('administrator')->user()->username, ['id' => 'username', 'placeholder' => 'Enter username', 'class' => 'form-control']) }}
                                 @if ($errors->has('username'))
                                 <span class="help-block">
                                     {{ $errors->first('username') }}
@@ -77,7 +77,7 @@ use Multidots\Admin\Traits\CheckRolePermission;
                         <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
                             {!! Html::decode(Form::label('Email', 'Email <span aria-required="true" class="required"> * </span>', ['class' => 'col-sm-2 control-label'])) !!}
                             <div class="col-sm-10">
-                                {{ Form::email('email', old('email') ? old('email') :  Auth::guard('admin')->user()->email, ['id' => 'email', 'placeholder' => 'Enter email', 'class' => 'form-control']) }}
+                                {{ Form::email('email', old('email') ? old('email') :  Auth::guard('administrator')->user()->email, ['id' => 'email', 'placeholder' => 'Enter email', 'class' => 'form-control']) }}
                                 @if ($errors->has('email'))
                                 <span class="help-block">
                                     {{ $errors->first('email') }}
@@ -99,11 +99,11 @@ use Multidots\Admin\Traits\CheckRolePermission;
                     <div class="tab-pane" id="changeAvatar">
                         {!! Form::open(['route' => ['update-profile','domain'=>config('app.ADMIN_CONST.ADMIN_DOMAIN_NAME')], 'name' => 'change-avatar-form', 'id' => 'change-avatar-form', 'class' => 'form-horizontal', 'files' => true]) !!}
                         {{ Form::hidden('form_type', 'edit_avatar') }}
-                        {{ Form::hidden('id', Auth::guard('admin')->user()->id) }}
+                        {{ Form::hidden('id', Auth::guard('administrator')->user()->id) }}
                         <div class="form-group timeline-body {{ $errors->has('avatar') ? 'has-error' : '' }} ">                             
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 140px; height: 140px;">                                                
-                                    <img src="{{ asset(Auth::guard('admin')->user()->avatar) }}" alt="" /> </div>
+                                    <img src="{{ asset(Auth::guard('administrator')->user()->avatar) }}" alt="" /> </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
                                 <div>
                                     <span class="btn default btn-file select-image-btn">
@@ -134,7 +134,7 @@ use Multidots\Admin\Traits\CheckRolePermission;
                     <div class="tab-pane" id="changePassword">
                         {!! Form::open(['route' => ['update-profile','domain' => config('app.ADMIN_CONST.ADMIN_DOMAIN_NAME')], 'name' => 'change-password', 'id' => 'change-password', 'class' => 'form-horizontal']) !!}
                         {{ Form::hidden('form_type', 'edit_password') }}
-                        {{ Form::hidden('id', Auth::guard('admin')->user()->id) }}
+                        {{ Form::hidden('id', Auth::guard('administrator')->user()->id) }}
                         <div class="form-group {{ $errors->has('current_password') ? ' has-error' : '' }}">
                             {!! Html::decode(Form::label('Current Password', 'Current Password <span aria-required="true" class="required"> * </span>', ['class' => 'col-sm-2 control-label'])) !!}
                             <div class="col-sm-10">
@@ -252,7 +252,7 @@ use Multidots\Admin\Traits\CheckRolePermission;
                             type: "post",
                             url: "/admin/account/check_username",
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                            data: {id: "{{  Auth::guard('admin')->user()->id }}"}
+                            data: {id: "{{  Auth::guard('administrator')->user()->id }}"}
                         },
                         onlyCharLetter: true,
                         minlength: 6,
@@ -264,7 +264,7 @@ use Multidots\Admin\Traits\CheckRolePermission;
                             url: "/admin/account/check_email",
                             type: "post",
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                            data: {id: "{{  Auth::guard('admin')->user()->id }}"}
+                            data: {id: "{{  Auth::guard('administrator')->user()->id }}"}
                         }
                     }
                 },

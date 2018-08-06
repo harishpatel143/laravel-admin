@@ -41,7 +41,7 @@ class Admin
      */
     public function user()
     {
-        return Auth::guard('admin')->user();
+        return Auth::guard('administrator')->user();
     }
 
     /**

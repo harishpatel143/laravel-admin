@@ -22,7 +22,7 @@ class Permission
      */
     public function handle($request, Closure $next, $permissions = null)
     {
-        if (!Auth::guard('admin')->check()) {
+        if (!Auth::guard('administrator')->check()) {
             return response()->view('admin::errors.401');
         }
         if (!empty($permissions)) {
