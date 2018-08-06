@@ -93,7 +93,10 @@ class AdminServiceProvider extends ServiceProvider
             //VIEWS
             $this->publishes([__DIR__ . '/resources/views' => resource_path('views/admin')], 'admin-views');
             //MIGRATIONS
-            $this->publishes([__DIR__ . '/database/migrations' => database_path('migrations')], 'admin-migrations');
+            $this->publishes([
+                __DIR__ . '/database/migrations' => database_path('migrations'),
+                __DIR__ . '/database/seeds' => database_path('seeds')
+                    ], 'admin-migrations');
             //SEEDS
             $this->publishes([__DIR__ . '/database/seeds' => database_path('seeds')], 'admin-seeds');
             //ASSETS
