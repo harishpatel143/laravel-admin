@@ -265,113 +265,6 @@ var handleValidation = function () {
         });
     };
 
-    var handleAvatarValidation = function () {
-
-        var form = $('#change-avatar-form');
-        var error = $('.alert-danger', form);
-        var success = $('.alert-success', form);
-        form.validate({
-            errorElement: 'span', //default input error message container
-            errorClass: 'help-block help-block-error', // default input error message class
-            focusInvalid: false, // do not focus the last invalid input
-            ignore: "", // validate all fields including form hidden input
-            messages: {
-                avatar: {
-                    extension: "The avatar must be a file of type: jpeg, bmp, png, jpg, gif."
-                }
-            },
-            rules: {
-                avatar: {
-                    extension: "jpg|jpeg|bmp|gif|png"
-                }
-            },
-            invalidHandler: function (event, validator) { //display error alert on form submit
-                success.hide();
-                error.show();
-            },
-            highlight: function (element) { // hightlight error inputs
-                $(element).closest('.form-group').addClass('has-error'); // set error class to the control group
-            },
-            unhighlight: function (element) { // revert the change done by hightlight
-                $(element).closest('.form-group').removeClass('has-error'); // set error class to the control group
-            },
-            success: function (label) {
-                label.closest('.form-group').removeClass('has-error'); // set success class to the control group
-            },
-            submitHandler: function (form) {
-                $('.bong-loader').css('display', 'block');
-                success.show();
-                error.hide();
-                form.submit();
-            },
-            errorPlacement: function (error, element) {
-                if (element.attr("type") == "file" || (element.attr("type") == "hidden" && element.attr("name") == 'avatar')) {
-                    error.insertAfter($('.avatar_message'));
-                } else {
-                    error.insertAfter(element);
-                }
-            }
-        });
-    };
-
-    var handleChangePasswordValidation = function () {
-        $('#change-password').validate({
-            errorElement: 'span', //default input error message container
-            errorClass: 'help-block', // default input error message class
-            focusInvalid: false, // do not focus the last invalid input
-            ignore: "",
-            rules: {
-                current_password: {
-                    required: true,
-                    remote: {
-                        type: "POST",
-                        url: "/admin/account/check_password",
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                        data: {id: $('#id').val()}
-                    }
-                },
-                password: {
-                    required: true,
-                    customPassword: true
-                },
-                confirm_password: {
-                    required: true,
-                    equalTo: "#password"
-                }
-            },
-            messages: {// custom messages for radio buttons and checkboxes
-                current_password: {
-                    required: "Please enter current password.",
-                    remote: "Your current password is wrong. Please enter correct password."
-                },
-                password: {
-                    required: "Please enter new password.",
-                    customPassword: "Password must be 6 to 20 characters with 1 uppercase and 1 lowercase letter."
-                },
-                confirm_password: {
-                    required: "Please enter confirm password.",
-                    equalTo: "The confirm password and password must match."
-                }
-            },
-            highlight: function (element) { // hightlight error inputs
-                $(element).closest('.form-group').addClass('has-error'); // set error class to the control group
-            },
-            success: function (label) {
-                label.closest('.form-group').removeClass('has-error');
-                label.remove();
-            },
-            errorPlacement: function (error, element) {
-                if (element.attr("name") == "password") { // insert checkbox errors after the container                  
-                    error.insertAfter(element.parent("div"));
-                } else {
-                    error.insertAfter(element);
-                }
-            },
-            submitHandler: function (form) {
-                form.submit();
-            }
-        });
-    };
 
     var handleAddAdminValidation = function () {
         var form = $('#add-admin-form');
@@ -797,9 +690,6 @@ var handleValidation = function () {
             handleLoginValidation();
             handleForgorPasswordValidation();
             handleResetPasswordValidation();
-            handleEditProfileValidation();
-            handleAvatarValidation();
-            handleChangePasswordValidation();
             handleAddAdminValidation();
             handleAddUserValidation();
             handleEditUserValidation();
