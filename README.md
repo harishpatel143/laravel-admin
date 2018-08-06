@@ -65,7 +65,7 @@ In this command ask you for create roll and default admin for the admin panel. e
 
 ### Before you run the application!
   
-  Open the App\Provider\AppServiceProvider.php file create a method called as registerHelper() add the following code and call this method from boot() method. Your AppServiveProvider.php file Loop like this afteradding the code.
+  Open the App\Provider\AppServiceProvider.php file create a method called as registerHelper() add the following code and call this method from boot() method. Your AppServiceProvider.php file Loop like this after adding the code.
 
 ```php
 <?php
@@ -114,7 +114,7 @@ class AppServiceProvider extends ServiceProvider
 
 
 ```
-It will registerthe helper function that we use in our admin package.
+It will register the helper function that we use in our admin package.
 
 #### For store images in public directory add new disk in config/filesystem.php 
 
@@ -252,7 +252,7 @@ return [
 ```
 
 
-#### For Email sending you have to configure the mail credetials in .env file
+#### For Email sending you have to configure the mail credentials in .env file
 
 -Emails is used to send Forgot password link.
 
