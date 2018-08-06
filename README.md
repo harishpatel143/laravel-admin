@@ -86,8 +86,8 @@ return [
 	php artisan db:seed --class=AdministratorsTableSeeder
 
 #### Run the laravel application
-
-    	php artisan serve
+	
+	php artisan serve
 
 
 #### Go to the URL http://127.0.0.1:8000/admin/
