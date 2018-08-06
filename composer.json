@@ -16,10 +16,7 @@
     "autoload": {
         "psr-4": {
             "Multidots\\Admin\\": "src/"
-        },
-        "files": [
-            "src/helpers.php"
-        ]
+        }      
     },
     "extra": {
         "laravel": {

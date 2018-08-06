@@ -84,6 +84,7 @@ class AdminServiceProvider extends ServiceProvider
             //Traits
             $this->publishes([
                 $this->replaceNamespace('MDImageHelper.php', __DIR__ . '/Helpers/') => app_path('Helpers' . DIRECTORY_SEPARATOR . 'MDImageHelper.php'),
+                $this->replaceNamespace('CommonHelper.php', __DIR__ . '/Helpers/') => app_path('Helpers' . DIRECTORY_SEPARATOR . 'CommonHelper.php'),
                     ], 'admin-md-helper');
             //Traits
             $this->publishes([

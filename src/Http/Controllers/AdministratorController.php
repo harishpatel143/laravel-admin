@@ -6,6 +6,7 @@ use Auth;
 use Multidots\Admin\Http\Controllers\Controller;
 use Multidots\Admin\Models\Administrator;
 use Multidots\Admin\Models\Role;
+use Multidots\Admin\Helpers\CommonHelper;
 use Exception;
 use Illuminate\Http\Request;
 use Multidots\Admin\Http\Requests\AdministratorRequest;
@@ -41,7 +42,7 @@ class AdministratorController extends Controller
      */
     public function index()
     {
-        $statusList = activeInactiveStatus();
+        $statusList = CommonHelper::activeInactiveStatus();
         $roles = Role::notDeleted()->where('name', 'LIKE', '%admin%')->pluck('name', 'id')->toArray();
         config(['admin.name' => 'Administrator']);
 
@@ -169,7 +170,7 @@ class AdministratorController extends Controller
     {
         try {
             $administrator = Administrator::active()->with('role')->findOrFail($request->id);
-            $statusList = activeInactiveStatus();
+            $statusList = CommonHelper::activeInactiveStatus();
             config(['admin.name' => 'View | Admin']);
 
             return view('admin::administrators.view', compact('administrator', 'statusList'));

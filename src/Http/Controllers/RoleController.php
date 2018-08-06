@@ -5,6 +5,7 @@ namespace Multidots\Admin\Http\Controllers;
 use Multidots\Admin\Http\Controllers\Controller;
 use Multidots\Admin\Http\Requests\RoleRequest;
 use Multidots\Admin\Models\Role;
+use Multidots\Admin\Helpers\CommonHelper;
 use Multidots\Admin\Models\Permission;
 use Cache;
 use Exception;
@@ -41,7 +42,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $statusList = activeInactiveStatus();
+        $statusList = CommonHelper::activeInactiveStatus();
         config(['app.name' => 'Roles']);
 
         return view('admin::role.index', compact('statusList'));

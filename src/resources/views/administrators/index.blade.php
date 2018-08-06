@@ -38,7 +38,7 @@
                                         {{ Form::select('role', $roles, null, ["id" => "role", 'placeholder' => 'Select Role', 'class' => 'form-control form-filter-dropdown']) }}
                                     </td>
                                     <td>
-                                        {{ Form::select('status', $statusList, null, ["id" => "status", 'class' => 'form-control form-filter-dropdown']) }}
+                                        {{ Form::select('status', $statusList, null, ["id" => "status", 'placeholder' => 'Select Status','class' => 'form-control form-filter-dropdown']) }}
                                     </td>                              
                                     <td>                                    
                                         <button class="btn btn-sm btn-default filter-submit" title="Search"><i class="fa fa-search"></i> <?= __('Search'); ?></button>

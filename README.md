@@ -1,122 +1,27 @@
 
-## About Laravel Admin Panel
+## #About Laravel Admin Panel
 
-This is Laravel Admin panel package,Developed for quick start with any new project come in development.
-It will save time for basic functionlity,Like:
+This is Laravel Admin panel package, Developed for a quick start with any new project come in development.
+It will save time for basic functionality,Like:
 
-- Administator Login, logout, forgot password, reset password,Edit profile,
-- Add, edit, View, Delete and listing of the Administators
-- Add, edit, view, Delete and listing of the Roles
-- Add, edit, view, Delete ,listing and manage the permission of the Role.
+### Step to Install
+    Create a new project or install in the existing project.
+    Setup new laravel application if you new to laravel refer the link to install new laravel project.
+	
+    https://laravel.com/docs/5.6/installation
 
+### Run the following composer command to install the multidots admin panel.  
 
-## Step to Install
+        composer require harish/laravel-admin
 
-### Run the following command to install new laravel appplication setup.
+### After installation publishes all the things in your application via bellow command.
+Note: Before running this command be sure that you have configured database settings in your .env file.
 
- 
-            composer create-project --prefer-dist laravel/laravel blog
-  
+        php artisan multidots-admin:install
 
+    -This command publishes all the controller, models, view, request file and routes files to your local environment. And also migrate the database.
 
-### After installing laravel application configgure database details in the env file
-
-            - DB_CONNECTION=mysql
-            - DB_HOST=127.0.0.1
-            - DB_PORT=3306
-            - DB_DATABASE=homestead
-            - DB_USERNAME=homestead
-            - DB_PASSWORD=secret
-    
-
-- Open the App\Provider\AppServiveProvider.php and add the following code into the boot() method to avoid "Specified key was too long" error at the time of database migrate.
-
-```php
-use Illuminate\Support\Facades\Schema;
-
-public function boot()
-{
-    ....
-    
-    Schema::defaultStringLength(191);
-    
-    .....
-}
-
-```
-
-### After the run the following composer command to install the multidots admin panel 
-
-
-  
-            composer require harish/laravel-admin
-
-
-
-### After successfully installation of package we need to publish and install in our application for that run this command 
-
-
-            php artisan multidots-admin:install
-
-
-### This command publish all the controller,models, view , request file and routes files to your local envronment.
-
-In this command ask you for create roll and default admin for the admin panel. enter the correct information.
-
-### Before you run the application!
-  
-  Open the App\Provider\AppServiceProvider.php file create a method called as registerHelper() add the following code and call this method from boot() method. Your AppServiceProvider.php file Loop like this after adding the code.
-
-```php
-<?php
-
-namespace App\Providers;
-
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
-
-class AppServiceProvider extends ServiceProvider
-{
-
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        Schema::defaultStringLength(191);
-        $this->registerHelpers();
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
-
-    /**
-     * Register helpers file
-     */
-    public function registerHelpers()
-    {
-        // Load the helpers in app/Http/helpers.php
-        if (file_exists($file = app_path('Http/helpers.php'))) {
-            require $file;
-        }
-    }
-
-}
-
-
-```
-It will register the helper function that we use in our admin package.
-
-#### For store images in public directory add new disk in config/filesystem.php 
+### For store images in public directory add a new disk in config/filesystem.php 
 
 ```php
 
@@ -134,9 +39,9 @@ It will register the helper function that we use in our admin package.
 ],
 
 ```
-#### After creating a disk you need to define a Authentication gaurd for administrator
+#### Define an Authentication guard for administrator
 
-For that open your config/auth.php file and modify it with bellow code. It will look like this after adding the guard.
+For that open your config/auth.php file and modify it with below code. It will look like this after adding the guard.
 
 ```php
 
@@ -165,7 +70,7 @@ return [
       |
       | Next, you may define every authentication guard for your application.
       | Of course, a great default configuration has been defined for you
-      | here which uses session storage and the Eloquent user provider.
+      | here which use session storage and the Eloquent user provider.
       |
       | All authentication drivers have a user provider. This defines how the
       | users are actually retrieved out of your database or other storage
@@ -175,18 +80,13 @@ return [
       |
      */
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
-        'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-        ],
+
+	......
         'administrator' => [
             'driver' => 'session',
             'provider' => 'administrators',
         ],
+	......
     ],
     /*
       |--------------------------------------------------------------------------
@@ -198,25 +98,20 @@ return [
       | mechanisms used by this application to persist your user's data.
       |
       | If you have multiple user tables or models you may configure multiple
-      | sources which represent each model / table. These sources may then
+      | sources which represent each model/table. These sources may then
       | be assigned to any extra authentication guards you have defined.
       |
       | Supported: "database", "eloquent"
       |
      */
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\User::class,
-        ],
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+
+      ..........
         'administrators' => [
             'driver' => 'eloquent',
             'model' => App\Models\Administrator::class,
         ]
+	.........
     ],
     /*
       |--------------------------------------------------------------------------
@@ -233,64 +128,28 @@ return [
       |
      */
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-        ],
+
+        ..........
         'administrators' => [
             'provider' => 'administrators',
             'table' => 'administrator_password_resets',
             'expire' => 60,
         ],
+	..........
     ],
 ];
-
-
-
-
 ```
-
-
-#### For Email sending you have to configure the mail credentials in .env file
-
--Emails is used to send Forgot password link.
-
-
-
-
-            MAIL_DRIVER=smtp
-            MAIL_HOST=smtp.mailtrap.io
-            MAIL_PORT=2525
-            MAIL_USERNAME=null
-            MAIL_PASSWORD=null
-            MAIL_ENCRYPTION=null
-
 
 #### Run the laravel application
 
   
-              php artisan serve
+            php artisan serve
 
 
-#### Go to the url http://127.0.0.1:8000/admin/
+#### Go to the URL http://127.0.0.1:8000/admin/
 
-
-#### Your Admin panel is install successfully.
+    Your Admin panel is installed successfully.
 
 #### Thank you 
 
-   -Feel Free to rais any issue in this Laravel Admin Panel Package :)
-
-
-
-
-
-
-
-
-
-
-
-
-
+  -Feel Free to rais any issue in this Laravel Admin Panel Package :)
