@@ -5,11 +5,11 @@
 #### You can install this package into your Laravel application by running this bellow command into your root directory.
 
 ```ssh
-	composer require harish/laravel-admin
+    composer require harish/laravel-admin
 ```
-#### Publishes all the things in your application via bellow command.
+#### Publish all the things in your application via bellow command.
 ```ssh
-	php artisan multidots-admin:install
+    php artisan multidots-admin:install
 ```
 #### For store images in public directory add a new disk in config/filesystem.php 
 
@@ -42,59 +42,59 @@ return [
    .........
    
     'guards' => [
-	.......
+    .......
 
-	'administrator' => [
+    'administrator' => [
             'driver' => 'session',
             'provider' => 'administrators',
         ],
-	.......
+    .......
     ],
     
     
     'providers' => [
-	..........
+    ..........
 
-	'administrators' => [
+    'administrators' => [
             'driver' => 'eloquent',
             'model' => App\Models\Administrator::class,
         ]
-	.........
+    .........
     ],
     
     'passwords' => [
-	..........
+    ..........
 
-	'administrators' => [
+    'administrators' => [
             'provider' => 'administrators',
             'table' => 'administrator_password_resets',
             'expire' => 60,
         ],
-	..........
+    ..........
     ],
     
 ];
 ```
 #### Database migration
 ```ssh
-	php artisan migrate
+    php artisan migrate
 ```
 #### Database seeding
 ```ssh
-	php artisan db:seed --class=AdministratorsTableSeeder
+    php artisan db:seed --class=AdministratorsTableSeeder
 ```
 #### Run the laravel application
-```ssh	
-	php artisan serve
+```ssh    
+    php artisan serve
 ```
 
 #### Go to the URL http://127.0.0.1:8000/admin/
 
     Your Admin panel is installed successfully.
     
-	Default user: demo@gmail.com
-	Default password: thinker99
-	
+    Default user: demo@gmail.com
+    Default password: thinker99
+    
 #### Thank you 
 
   -Feel Free to rais any issue in this Laravel Admin Panel Package :)
