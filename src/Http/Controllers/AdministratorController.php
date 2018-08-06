@@ -77,7 +77,7 @@ class AdministratorController extends Controller
         $this->getCurrentPageNo($page);
 
         $searchData = [];
-        $searchData[] = ['id', '<>', Auth::guard('administrator')->user()->id];
+        $searchData[] = ['id', '<>', Auth::guard('admin')->user()->id];
 
         $requestData = ['username', 'email'];
 

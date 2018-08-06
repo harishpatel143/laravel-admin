@@ -37,7 +37,7 @@ trait CheckRolePermission
     {
         self::rolePermissions();
 
-        if (config('admin.ADMIN_CONST.SUPER_ADMIN') === Auth::guard('administrator')->user()->role_id) {
+        if (config('admin.ADMIN_CONST.SUPER_ADMIN') === Auth::guard('admin')->user()->role_id) {
             return true;
         }
 
@@ -66,7 +66,7 @@ trait CheckRolePermission
      */
     public static function performAccessValidation($request)
     {
-        if (config('admin.ADMIN_CONST.SUPER_ADMIN') === Auth::guard('administrator')->user()->role_id) {
+        if (config('admin.ADMIN_CONST.SUPER_ADMIN') === Auth::guard('admin')->user()->role_id) {
             return true;
         }
 

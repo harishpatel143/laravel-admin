@@ -114,7 +114,7 @@ trait Permissions
      */
     public static function rolePermissions()
     {
-        $userPermissionData = self::getList(Auth::guard('administrator')->user()->role_id);
+        $userPermissionData = self::getList(Auth::guard('admin')->user()->role_id);
 
         return $userPermissionData;
     }

@@ -21,7 +21,7 @@ class LoginController extends Controller
       |
      */
 
-    use AuthenticatesUsers;
+use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
@@ -36,7 +36,7 @@ class LoginController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('administrator');
+        return Auth::guard('admin');
     }
 
     /**
@@ -46,8 +46,6 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-//        echo 'Hello from Package Controller!!!!';
-//        exit();
         config(['app.name' => 'Login']);
 
         return view('admin::adminAuth.login');
@@ -62,7 +60,7 @@ class LoginController extends Controller
     protected function credentials(Request $request)
     {
         $field = filter_var($request->get($this->username()), FILTER_VALIDATE_EMAIL) ? $this->username() : 'username';
-
+        
         return [
             $field => $request->get($this->username()),
             'password' => $request->password,
@@ -92,7 +90,7 @@ class LoginController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
     public function login(Request $request)
-    {        
+    {
         $this->validateLogin($request);
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
@@ -142,7 +140,7 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request)
     {
-        $adminData = Administrator::find(Auth::guard('administrator')->user()->id);
+        $adminData = Administrator::find(Auth::guard('admin')->user()->id);
         $adminData->last_login = date('Y-m-d H:i:s');
         $adminData->save();
 
@@ -160,7 +158,7 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-        $this->guard('admin')->logout();
+        $this->guard('administrator')->logout();
         $request->session()->flush();
         $request->session()->regenerate();
         $request->session()->flash('success', 'You have successfully logged out.');

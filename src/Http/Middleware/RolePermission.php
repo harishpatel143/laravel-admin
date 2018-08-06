@@ -21,7 +21,7 @@ class RolePermission
     public function handle($request, Closure $next)
     {
         echo '<pre>'; print_r('RolePermission'); die;
-        if (Auth::guard('administrator')->check() && CheckRolePermission::rolePermissions()) {
+        if (Auth::guard('admin')->check() && CheckRolePermission::rolePermissions()) {
             if (CheckRolePermission::performAccessValidation($request)) {
                 return $next($request);
             }

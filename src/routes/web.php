@@ -24,7 +24,7 @@ Route::group(['prefix' => config('admin.route.prefix'), 'namespace' => 'Multidot
 
         // Profile  Routes
         Route::get('/account/profile', function () {
-            config(['app.name' => Auth::guard('administrator')->user()->full_name . ' | Edit Profile']);
+            config(['app.name' => Auth::guard('admin')->user()->full_name . ' | Edit Profile']);
 
             return view('admin::account.edit_profile');
         })->name('profile');
