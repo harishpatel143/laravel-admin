@@ -158,7 +158,7 @@ use AuthenticatesUsers;
      */
     public function logout(Request $request)
     {
-        $this->guard('administrator')->logout();
+        $this->guard('admin')->logout();
         $request->session()->flush();
         $request->session()->regenerate();
         $request->session()->flash('success', 'You have successfully logged out.');
