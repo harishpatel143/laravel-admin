@@ -14,24 +14,20 @@ It will save time for basic functionlity,Like:
 
 ### Run the following command to install new laravel appplication setup.
 
-```php
+ 
+            composer create-project --prefer-dist laravel/laravel blog
+  
 
-    composer create-project --prefer-dist laravel/laravel blog
-
-```
 
 ### After installing laravel application configgure database details in the env file
 
-```php 
-
-    - DB_CONNECTION=mysql
-    - DB_HOST=127.0.0.1
-    - DB_PORT=3306
-    - DB_DATABASE=homestead
-    - DB_USERNAME=homestead
-    - DB_PASSWORD=secret
+            - DB_CONNECTION=mysql
+            - DB_HOST=127.0.0.1
+            - DB_PORT=3306
+            - DB_DATABASE=homestead
+            - DB_USERNAME=homestead
+            - DB_PASSWORD=secret
     
-```
 
 - Open the App\Provider\AppServiveProvider.php and add the following code into the boot() method to avoid "Specified key was too long" error at the time of database migrate.
 
@@ -51,19 +47,17 @@ public function boot()
 
 ### After the run the following composer command to install the multidots admin panel 
 
-```php 
-  
-composer require harish/laravel-admin
 
-```
+  
+            composer require harish/laravel-admin
+
+
 
 ### After successfully installation of package we need to publish and install in our application for that run this command 
 
-```php 
 
-php artisan multidots-admin:install
+            php artisan multidots-admin:install
 
-```
 
 ### This command publish all the controller,models, view , request file and routes files to your local envronment.
 
@@ -263,29 +257,27 @@ return [
 -Emails is used to send Forgot password link.
 
 
-```php 
 
-    MAIL_DRIVER=smtp
-    MAIL_HOST=smtp.mailtrap.io
-    MAIL_PORT=2525
-    MAIL_USERNAME=null
-    MAIL_PASSWORD=null
-    MAIL_ENCRYPTION=null
 
-```
+            MAIL_DRIVER=smtp
+            MAIL_HOST=smtp.mailtrap.io
+            MAIL_PORT=2525
+            MAIL_USERNAME=null
+            MAIL_PASSWORD=null
+            MAIL_ENCRYPTION=null
+
 
 #### Run the laravel application
 
-```php 
   
-      php artinsa serve
+              php artisan serve
 
-```
 
 #### Go to the url http://127.0.0.1:8000/admin/
 
 
 #### Your Admin panel is install successfully.
+
 #### Thank you 
 
    -Feel Free to rais any issue in this Laravel Admin Panel Package :)
