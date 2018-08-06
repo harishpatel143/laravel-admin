@@ -1,8 +1,5 @@
 
-### About Laravel Admin Panel
-
-This is Laravel Admin panel package, Developed for a quick start with any new project come in development.
-It will save time for basic functionality,Like:
+# Admin panel package for Laravel
 
 ### Step to Install
 #### You can install this package into your Laravel application by running this bellow command into your root directory.
