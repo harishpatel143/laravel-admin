@@ -61,6 +61,18 @@ return [
             ],
         ],
     ],
+    /**
+     * file uploading path configuration.
+     * 
+     */
+    'filesystems' => [
+        'disks' => [
+            'public_local' => [
+                'driver' => 'local',
+                'root' => public_path(''),
+            ],
+        ],
+    ],
     /*
      * Laravel-admin database setting.
      */
