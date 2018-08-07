@@ -727,6 +727,8 @@ jQuery(document).ready(function () {
 
         $('#password').val(text);
         $('#confirm_password').val(text);
+        $('#password,#confirm_password').valid();
+
     });
 });
 
