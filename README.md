@@ -26,8 +26,6 @@
 
 #### Go to the URL http://127.0.0.1:8000/admin/
 
-    Your Admin panel is installed successfully.
-    
     user: demo@gmail.com
     password: thinker99
     
