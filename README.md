@@ -16,15 +16,22 @@
     php artisan migrate
 ```
 #### Database seeding
+    Run the bellow commands:
+    
 ```ssh
+    composer dump-autoload
+    
     php artisan db:seed --class=AdministratorsTableSeeder
+    
 ```
 #### Run the laravel application
 ```ssh    
     php artisan serve
 ```
 
-#### Go to the URL http://127.0.0.1:8000/admin/
+#### You have done.
+
+    Go to http://127.0.0.1:8000/admin/ for open laravel admin panel.
 
     user: demo@gmail.com
     password: thinker99
