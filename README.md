@@ -18,6 +18,7 @@
 Run the bellow commands:
 ```ssh
     composer dump-autoload
+    
     php artisan db:seed --class=AdministratorsTableSeeder
 ```
 #### Run the laravel application
