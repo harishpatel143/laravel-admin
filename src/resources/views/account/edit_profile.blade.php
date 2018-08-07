@@ -282,7 +282,7 @@ use Multidots\Admin\Traits\CheckRolePermission;
                     label.closest('.form-group').removeClass('has-error'); // set success class to the control group
                 },
                 submitHandler: function (form) {
-                    $('.bong-loader').css('display', 'block');
+                    $('.form-loader').css('display', 'block');
                     success.show();
                     error.hide();
                     form.submit();
@@ -326,7 +326,7 @@ use Multidots\Admin\Traits\CheckRolePermission;
                     label.closest('.form-group').removeClass('has-error'); // set success class to the control group
                 },
                 submitHandler: function (form) {
-                    $('.bong-loader').css('display', 'block');
+                    $('.form-loader').css('display', 'block');
                     success.show();
                     error.hide();
                     form.submit();
@@ -394,6 +394,7 @@ use Multidots\Admin\Traits\CheckRolePermission;
                     }
                 },
                 submitHandler: function (form) {
+                    $('.form-loader').css('display', 'block');
                     form.submit();
                 }
             });

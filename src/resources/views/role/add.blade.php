@@ -48,7 +48,7 @@
             var form = $('#add-roles-form');
             var error = $('.alert-danger', form);
             var success = $('.alert-success', form);
-            
+
             form.validate({
                 errorElement: 'span', //default input error message container
                 errorClass: 'help-block help-block-error', // default input error message class
@@ -72,7 +72,7 @@
                         remote: {
                             url: "roles/check-name",
                             type: "post",
-                            headers:{
+                            headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                         }
@@ -96,7 +96,7 @@
                     label.closest('.form-group').removeClass('has-error'); // set success class to the control group
                 },
                 submitHandler: function (form) {
-                    $('.bong-loader').css('display', 'block');
+                    $('.form-loader').css('display', 'block');
                     success.show();
                     error.hide();
                     form.submit();

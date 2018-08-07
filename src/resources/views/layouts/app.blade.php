@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
     <head>
-        
+
         @include('admin::includes.head')        
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
+        <div class="form-loader"></div>
         <div id="app" class="wrapper">
             <!-- Include Header-->
             <header class="main-header">

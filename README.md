@@ -1,5 +1,5 @@
 
-# Admin panel package for Laravel
+## Admin panel package for Laravel
 
 ### Step to Install
 #### You can install this package into your Laravel application by running this bellow command into your root directory.

@@ -1,7 +1,19 @@
 /*!
  * Custom CSS write here
  */
-
+.form-loader{
+    background: #fff url("../img/loader.gif") no-repeat scroll center center;
+    cursor: wait;
+    display: none;
+    height: 100%;
+    opacity: 0.4;
+    position: fixed;
+    width: 100%;
+    z-index: 1001;
+    background-color:#000;
+    left:0;
+    top:0;
+}
 .control-label .required,
 .form-group .required {
     color: #e02222;

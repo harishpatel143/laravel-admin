@@ -108,7 +108,7 @@
                     label.closest('.form-group').removeClass('has-error'); // set success class to the control group
                 },
                 submitHandler: function (form) {
-                    $('.bong-loader').css('display', 'block');
+                    $('.form-loader').css('display', 'block');
                     success.show();
                     error.hide();
                     form.submit();
