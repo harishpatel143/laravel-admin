@@ -30,5 +30,4 @@ Run the bellow commands:
 
     user: demo@gmail.com
     password: thinker99
-#### Thank you 
-  -Feel Free to rais any issue in this Laravel Admin Panel Package :)
+
