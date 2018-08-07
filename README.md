@@ -92,8 +92,8 @@ return [
 
     Your Admin panel is installed successfully.
     
-    Default user: demo@gmail.com
-    Default password: thinker99
+    user: demo@gmail.com
+    password: thinker99
     
 #### Thank you 
 

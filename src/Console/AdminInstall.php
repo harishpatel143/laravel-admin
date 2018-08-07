@@ -40,14 +40,14 @@ class AdminInstall extends Command
     public function handle()
     {
         $this->info('Welcome to Multidots Admin Panel');
-        $this->info('1. Publishing Admin Controllers, Models, Views and Migrations');
+        $this->info('Publishing Admin Controllers, Models, Views and Migrations');
         $this->publishAdminFile();
-        $this->info('3. Append routes to web.php');
+        $this->info('Append routes to web.php');
         $this->appendRoutes();
         $this->removeTempFile();
-//        $this->info('4. Create Role');
+//        $this->info('Create Role');
 //        $this->createRole();
-//        $this->info('5. Create Admin');
+//        $this->info('Create Admin');
 //        $this->createAdmin();
         Artisan::call('cache:clear');
         $this->info('Package install successfuly.');

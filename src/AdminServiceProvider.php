@@ -81,12 +81,12 @@ class AdminServiceProvider extends ServiceProvider
                 $this->replaceNamespace('CheckRolePermission.php', __DIR__ . '/Traits/') => app_path('Traits' . DIRECTORY_SEPARATOR . 'CheckRolePermission.php'),
                 $this->replaceNamespace('Permissions.php', __DIR__ . '/Traits/') => app_path('Traits' . DIRECTORY_SEPARATOR . 'Permissions.php'),
                     ], 'admin-traits');
-            //Traits
+            //Helpers
             $this->publishes([
                 $this->replaceNamespace('MDImageHelper.php', __DIR__ . '/Helpers/') => app_path('Helpers' . DIRECTORY_SEPARATOR . 'MDImageHelper.php'),
                 $this->replaceNamespace('CommonHelper.php', __DIR__ . '/Helpers/') => app_path('Helpers' . DIRECTORY_SEPARATOR . 'CommonHelper.php'),
                     ], 'admin-md-helper');
-            //Traits
+            //Email notification 
             $this->publishes([
                 $this->replaceNamespace('AdminResetPasswordNotification.php', __DIR__ . '/Notifications/') => app_path('Notifications' . DIRECTORY_SEPARATOR . 'AdminResetPasswordNotification.php'),
                     ], 'admin-notifications');
