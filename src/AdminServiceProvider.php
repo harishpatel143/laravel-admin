@@ -130,6 +130,7 @@ class AdminServiceProvider extends ServiceProvider
         $this->app->make('Multidots\Admin\Http\Controllers\RoleController');
 
         $this->loadAdminAuthConfig();
+        $this->loadFileSystenConfig();
         $this->registerRouteMiddleware();
         $this->commands($this->commands);
     }
@@ -142,6 +143,16 @@ class AdminServiceProvider extends ServiceProvider
     protected function loadAdminAuthConfig()
     {
         config(array_dot(config('admin.auth', []), 'auth.'));
+    }
+
+    /**
+     * Setup Filesystem configuration.
+     *
+     * @return void
+     */
+    protected function loadFileSystenConfig()
+    {
+        config(array_dot(config('admin.filesystems', []), 'filesystems.'));
     }
 
     /**

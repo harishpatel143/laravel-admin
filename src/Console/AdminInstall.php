@@ -51,7 +51,6 @@ class AdminInstall extends Command
 //        $this->createAdmin();
         Artisan::call('cache:clear');
         $this->info('Package install successfuly.');
-        $this->info('Run on -> http://127.0.0.1:8000/admin/ ');
     }
 
     /**
@@ -60,7 +59,7 @@ class AdminInstall extends Command
     public function publishAdminFile()
     {
         $this->callSilent('vendor:publish', [
-            '--tag' => ['admin-controllers', 'admin-models', 'admin-views', 'admin-seeds', 'admin-migrations', 'admin-assets', 'admin-request', 'admin-config', 'admin-helper', 'admin-traits', 'admin-md-helper','admin-notifications'],
+            '--tag' => ['admin-controllers', 'admin-models', 'admin-views', 'admin-seeds', 'admin-migrations', 'admin-assets', 'admin-request', 'admin-config', 'admin-helper', 'admin-traits', 'admin-md-helper', 'admin-notifications'],
             '--force' => true
         ]);
         $this->info('Files published successfully.');
