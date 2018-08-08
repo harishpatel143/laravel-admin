@@ -1,7 +1,10 @@
 
 ## Admin panel package for Laravel
-
-### Step to Install
+#### Compatibility
+    
+    - Laravel +5.5
+    
+#### Step to Install
 #### You can install this package into your Laravel application by running this bellow command into your root directory.
 ```ssh
     composer require harish/laravel-admin
