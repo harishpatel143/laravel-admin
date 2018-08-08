@@ -18,7 +18,7 @@ class ForgotPasswordController extends Controller
     //Password Broker for Seller Model
     public function broker()
     {
-        return Password::broker('administrators');
+        return Password::broker('admin');
     }
 
     /**
